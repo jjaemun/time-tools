@@ -10,6 +10,7 @@
 
 
 namespace tts {
+
     // types.
     enum class epoch {
         unix,
@@ -17,4 +18,5 @@ namespace tts {
         murex,
         julian
     };
+
 } // namespace tts.
