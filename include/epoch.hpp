@@ -7,7 +7,9 @@
 namespace tts {
 
     /**
-     *
+     * Dates require that we track some time origin or 'epoch', which determines
+     * their interpretation. Conversions to/from different applications must be 
+     * carefully handled to preserve temporal significance.
     */
 
     // types.
@@ -17,4 +19,5 @@ namespace tts {
         murex,
         julian
     };
+
 } // namespace tts.
