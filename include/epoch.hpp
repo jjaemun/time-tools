@@ -1,6 +1,11 @@
 #pragma once
 
 
+#ifdef unix
+#undef unix
+#endif
+
+
 #include "types.hpp"
 
 
