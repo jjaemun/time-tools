@@ -5,7 +5,7 @@
 
 
 namespace tts {
-    // epochs.
+    // types.
     enum class epoch {
         unix,
         excel,
@@ -13,28 +13,28 @@ namespace tts {
         julian
     };
 
+    // constants.
     namespace unix {
-        constexpr u32 OFFSET = ;
-        constexpr u32 MIN = ;
-        constexpr u32 MAX = ;
+        constexpr i32 OFFSET = (i32)0;
+        constexpr i32 MIN = (i32)-25567;
+        constexpr i32 MAX = (i32)84557;
     } // namespace unix.
  
     namespace excel {
-        constexpr u32 OFFSET = ;
-        constexpr u32 MIN = ;
-        constexpr u32 MAX = ;
+        constexpr i32 OFFSET = (i32)25569;
+        constexpr i32 MIN = OFFSET + unix::MIN;
+        constexpr i32 MAX = OFFSET + unix::MAX;     
     } // namespace excel.
     
     namespace murex {
-        constexpr u32 OFFSET = ;
-        constexpr u32 MIN = ;
-        constexpr u32 MAX = ;
+        constexpr i32 OFFSET;
+        constexpr i32 MIN;
+        constexpr i32 MAX;     
     } // namespace murex.
  
     namespace julian {
-        constexpr u32 OFFSET = ;
-        constexpr u32 MIN = ;
-        constexpr u32 MAX = ;
+        constexpr i32 OFFSET = (i32)2440588;
+        constexpr i32 MIN = OFFSET + unix::MIN;
+        constexpr i32 MAX = OFFSET + unix::MAX;
     } // namespace julian.
 } // namespace tts.
-
