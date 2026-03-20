@@ -9,7 +9,7 @@ namespace tts {
     /**
      * Internally tts uses unix epoch convention for serials, and so all dates
      * are expressed relative to the origin 1970-01-01. Additionally, dates are
-     * restricted to the (inclusive) interval 1980-01-01 and 2200-12-31.
+     * restricted to the inclusive interval between 1980-01-01 and 2200-12-31.
      */
 
     // constants.
