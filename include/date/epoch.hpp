@@ -27,9 +27,9 @@ namespace tts {
     } // namespace excel.
     
     namespace murex {
-        constexpr i32 OFFSET;
-        constexpr i32 MIN;
-        constexpr i32 MAX;     
+        constexpr i32 OFFSET{};
+        constexpr i32 MIN{};
+        constexpr i32 MAX{};     
     } // namespace murex.
  
     namespace julian {
