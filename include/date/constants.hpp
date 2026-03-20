@@ -15,27 +15,25 @@ namespace tts {
     // constants.
     namespace unix::date {
         constexpr i32 OFFSET = (i32)0;
-        constexpr i32 MIN = (i32)-25567;
-        constexpr i32 MAX = (i32)84557;
-    } // namespace unix.
+        constexpr i32 MIN = (i32)3653;
+        constexpr i32 MAX = (i32)84482;
+    }
  
     namespace excel {
         constexpr i32 OFFSET = (i32)25569;
-        constexpr i32 MIN = OFFSET + unix::MIN;
-        constexpr i32 MAX = OFFSET + unix::MAX;     
-    } // namespace excel.
+        constexpr i32 MIN = OFFSET + unix::date::MIN;
+        constexpr i32 MAX = OFFSET + unix::date::MAX;     
+    }
     
     namespace murex {
-        constexpr i32 OFFSET{};
-        constexpr i32 MIN{};
-        constexpr i32 MAX{};     
-    } // namespace murex.
+        //TODO.
+    }
  
     namespace julian {
         constexpr i32 OFFSET = (i32)2440588;
-        constexpr i32 MIN = OFFSET + unix::MIN;
-        constexpr i32 MAX = OFFSET + unix::MAX;
-    } // namespace julian.
+        constexpr i32 MIN = OFFSET + unix::date::MIN;
+        constexpr i32 MAX = OFFSET + unix::date::MAX;
+    }
 
 } // namespace tts.
 
