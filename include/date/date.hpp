@@ -12,10 +12,9 @@ namespace tts {
          * unix epoch (native).
         */
 
-    private:
+    public:
         i32 value;
 
-    public:
         // copy-accessors!
         [[nodiscard]] 
         inline constexpr i32 to_unix_serial(void) const {
