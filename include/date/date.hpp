@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "types.hpp"
+#include "constants.hpp"
 
 
 namespace tts {
@@ -11,8 +11,31 @@ namespace tts {
 
         // copy-accessors!
         [[nodiscard]] 
-        inline constexpr i32 to_serial_date(void) const {
+        inline constexpr i32 to_unix_serial(void) const {
             return value;
         }
+
+        [[nodiscard]] 
+        inline constexpr i32 to_excel_serial(void) const {
+            return value + excel::date::OFFSET;
+        }
+
+        [[nodiscard]] 
+        inline constexpr i32 to_murex_serial(void) const {
+            return value + murex::date::OFFSET;
+        }
+        
+        [[nodiscard]] 
+        inline constexpr i32 to_julian_serial(void) const {
+            return value + julian::date::OFFSET;
+        }
+
+        
+        // mutable-ref-accessors!
+        [[nodiscard]] 
+        inline constexpr i32 &as_unix_serial(void) {
+            return value;
+        }       
+
     };
 } // namespace tts.
