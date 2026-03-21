@@ -1,7 +1,6 @@
 #pragma once
 
 
-#include "constants.hpp"
 #include "date.hpp"
 #include "exceptions.hpp"
 #include "validation.hpp"
@@ -12,20 +11,20 @@ namespace tts {
     // copy-to-conversions.
     [[nodiscard]]
     constexpr i32 to_unix_serial(Date date) noexcept {
-        return  date.value;
+        return  date.to_unix_serial();
     }
 
     [[nodiscard]]
     constexpr i32 to_excel_serial(Date date) noexcept {
-        return  date.value + excel::date::OFFSET;
+        return  date.to_excel_serial;
     }
     [[nodiscard]]
     constexpr i32 to_murex_serial(Date date) noexcept {
-        return  date.value + murex::date::OFFSET;
+        return  date.to_murex_serial();
     }
     [[nodiscard]]
     constexpr i32 to_julian_serial(Date date) noexcept {
-        return  date.value + julian::date::OFFSET;
+        return  date.to_julian_serial();
     }
  
     // copy-from-conversions.
