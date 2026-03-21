@@ -31,7 +31,7 @@ namespace tts {
 
         return cmpeq(lhs.value, rhs.value);
     }
-    #else // explicit six --fallback.
+    #else
 
     // partial ord!
     [[nodiscard]]
