@@ -17,25 +17,25 @@ namespace tts {
 
     [[nodiscard]]
     template <typename T>
-    constexpr void cmplt(T a, T b) noexcept {
+    constexpr bool cmplt(T a, T b) noexcept {
         return (a < b);
     }
     
     [[nodiscard]]
     template <typename T>
-    constexpr void cmple(T a, T b) noexcept {
+    constexpr bool cmple(T a, T b) noexcept {
         return (a <= b);
     }
     
     [[nodiscard]]
     template <typename T>
-    constexpr void cmpgt(T a, T b) noexcept {
+    constexpr bool cmpgt(T a, T b) noexcept {
         return (a > b);
     }
     
     [[nodiscard]]
     template <typename T>
-    constexpr void cmpge(T a, T b) noexcept {
+    constexpr bool cmpge(T a, T b) noexcept {
         return assert(a <= b);
     }
 } // namespace tts.
