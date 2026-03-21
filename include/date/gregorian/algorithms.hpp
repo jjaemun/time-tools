@@ -93,7 +93,6 @@ namespace tts::gregorian {
             - (eyear / 100));
     }
 
-    [[maybe_unused]]
     [[nodiscard]] 
     constexpr i32 yday_from_eday(i32 eday) noexcept {
         
@@ -151,23 +150,19 @@ namespace tts::gregorian {
             current = ((gregorian- era::DAYS) / 
                 era::DAYS);
   
-        const auto eday = (gregorian - current *
-            era::DAYS); 
+        const auto eday = (gregorian - current * era::DAYS); 
         const auto eyear = eyear_from_eday(eday);  
 
-        const auto year = eyear + current *
-            era::YEARS;
-        const auto yday = 
-            yday_from_eday_and_eyear(eday, eyear);
+        const auto year = (eyear + current * era::YEARS);
+        const auto yday = yday_from_eday_and_eyear(eday, eyear);
 
         const auto emonth = emonth_from_yday(yday);
-        const auto month = 
-            static_cast<u16>(decode_month(emonth));
-
-        const auto day = 
-            static_cast<u16>(mday_from_yday_and_emonth(yday, emonth));
-        const auto correction = 
-            static_cast<i32>(month <= 2);
+        const auto month = static_cast<u16>(decode_month(emonth));
+        const auto correction = static_cast<i32>(month <= 2);
+        
+        const auto day = static_cast<u16>(
+            mday_from_yday_and_emonth(yday, emonth)
+        );        
 
         return CivilDate{
             year + correction,
@@ -196,12 +191,9 @@ namespace tts::gregorian {
             current = ((year - era::YEARS + 1)
                 / era::YEARS);
 
-        const auto eyear = year - current * 
-            era::YEARS;
-        const auto yday = civil.day - 1 + 
-            yday_from_emonth(emonth);
-        const auto eday = 
-            eday_from_yday_and_eyear(yday, eyear);
+        const auto eyear = year - current * era::YEARS;
+        const auto yday = civil.day - 1 + yday_from_emonth(emonth);
+        const auto eday = eday_from_yday_and_eyear(yday, eyear);
 
         return (current * era::DAYS + 
             eday - OFFSET);
