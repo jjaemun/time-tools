@@ -9,8 +9,7 @@ namespace tts::gregorian {
     constexpr i32 OFFSET{719468}; 
  
     /**
-     * Proleptic gregorian epoch shift (from unix epoch), set origin 
-     * at 0000-03-01.
+     * Proleptic gregorian epoch shift (from unix), sets origin at 0000-03-01.
     */
 
     constexpr i32 DAYS{365};
@@ -29,6 +28,7 @@ namespace tts::gregorian {
    
     namespace era {
         constexpr i32 YEARS{400}; 
+
             /**
              * Years in an era.
             */
