@@ -1,8 +1,8 @@
 #pragma once
 
 
-namespace err::tts {
+namespace tts::err {
     enum class date {
         invalid
     };
-} // namespace err::tts.
+} // namespace tts::err.
