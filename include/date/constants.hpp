@@ -15,6 +15,10 @@ namespace tts {
     // constants.
     namespace unix::date {
         // epoch 1970-01-01.
+        constexpr i32 YEAR{1970};
+        constexpr i32 MONTH{1};
+        constexpr i32 DAY{1};
+
         constexpr i32 OFFSET{0};
         constexpr i32 MIN{3652};
         constexpr i32 MAX{84370};
