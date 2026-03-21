@@ -19,11 +19,19 @@ namespace tts {
     constexpr auto operator<=>(Date lhs, Date rhs) noexcept {
         return lhs.value <=> rhs.value;
     }
-    #else 
+
+    // (in)equality! 
+    [[nodiscard]]
+    constexpr bool operator==(Date lhs, Date rhs) noexcept {
         
         /**
-         * Explicit six fallback --standard implementation.
-        */
+         * In spaceship path, inequality is automatically derived from the
+         * equality operator overload.
+         */
+
+        return cmpeq(lhs.value, rhs.value);
+    }
+    #else // explicit six --fallback.
 
     // partial ord!
     [[nodiscard]]
@@ -46,7 +54,6 @@ namespace tts {
     constexpr bool operator>(Date lhs, Date rhs) noexcept {
         return cmpgt(lhs.value, rhs.value);
     }
-    #endif
 
     // (in)equality! 
     [[nodiscard]]
@@ -58,4 +65,5 @@ namespace tts {
     constexpr bool operator!=(Date lhs, Date rhs) noexcept {
         return cmpneq(lhs.value, rhs.value);
     }   
+    #endif
 } // namespace tts.
