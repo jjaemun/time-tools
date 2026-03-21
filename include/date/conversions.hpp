@@ -3,6 +3,8 @@
 
 #include "constants.hpp"
 #include "date.hpp"
+#include "exceptions.hpp"
+#include "validation.hpp"
 
 
 namespace tts {
