@@ -1,8 +1,7 @@
 #pragma once
 
 
-#include <string_view>
-#include <utility>
+#include <string>
 
 
 namespace tts::err {
@@ -12,7 +11,8 @@ namespace tts::err {
     };
 
     // descriptors!
-    inline std::string_view to_str(date code) {
+    [[nodiscard]]
+    inline std::string to_str(date code) {
 
         /**
          * Converts date submodule error code to str view.
@@ -23,7 +23,8 @@ namespace tts::err {
                 return "Date outside valid interval.";
             
             default:
-                std::unreachable();
+                // c++23 only std::unreachable().
+                __builtin_unreachable(); 
         }
     }
 } // namespace tts::err.
