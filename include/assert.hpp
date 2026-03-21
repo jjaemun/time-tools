@@ -33,6 +33,6 @@ namespace tts {
     
     template <typename T>
     constexpr void assert_ge(T a, T b) noexcept {
-        assert(a <= b);
+        assert(a >= b);
     }
 } // namespace tts.
