@@ -10,8 +10,8 @@ namespace tts {
     
         /**
          * As of writing this, it is unclear whether spaceship implementation
-         * is allowed for cmp operations. Regardless, some future-proof-ing is
-         * never too bad (C++20).
+         * is banned for cmp operations. Regardless, some future-proof-ing is
+         * never too bad (C++20), especially when it saves lines of code.
          */
 
     // spaceship!
