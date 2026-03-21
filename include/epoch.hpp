@@ -1,12 +1,12 @@
 #pragma once
 
 
+#include "types.hpp"
+
+
 #ifdef unix
 #undef unix
 #endif
-
-
-#include "types.hpp"
 
 
 namespace tts {
