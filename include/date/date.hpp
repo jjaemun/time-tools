@@ -6,9 +6,16 @@
 
 namespace tts {
     class Date final {
-        public:
-            i32 value;
+    
+        /** 
+         * Date abstraction. Internally tracks days from
+         * unix epoch (native).
+        */
 
+    private:
+        i32 value;
+
+    public:
         // copy-accessors!
         [[nodiscard]] 
         inline constexpr i32 to_unix_serial(void) const {
@@ -30,7 +37,6 @@ namespace tts {
             return value + julian::date::OFFSET;
         }
 
-        
         // mutable-ref-accessors!
         [[nodiscard]] 
         inline constexpr i32 &as_unix_serial(void) {
