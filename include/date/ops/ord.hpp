@@ -6,7 +6,8 @@
 
 
 namespace tts {
-    #if defined(__cpp_impl_three_way_comparison) && defined(__cpp_lib_three_way_comparison)
+    #if (defined(__cpp_impl_three_way_comparison) \
+            && defined(__cpp_lib_three_way_comparison))
     
         /**
          * As of writing this, it is unclear whether spaceship implementation
