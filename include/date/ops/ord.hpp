@@ -56,6 +56,6 @@ namespace tts {
 
     [[nodiscard]]
     constexpr bool operator!=(Date lhs, Date rhs) noexcept {
-        return cmpne(lhs.value, rhs.value);
+        return cmpneq(lhs.value, rhs.value);
     }   
 } // namespace tts.
