@@ -8,23 +8,24 @@ namespace tts::gregorian {
     // constants! 
     constexpr i32 OFFSET{719468}; 
  
-    /**
-     * Proleptic gregorian epoch shift (from unix), sets origin at 0000-03-01.
-    */
+        /**
+         * Proleptic gregorian epoch shift (from unix), sets origin
+         * at 0000-03-01.
+        */
 
     constexpr i32 DAYS{365};
     
-    /**
-     * Days in a year.
-    */
+        /**
+         * Days in a year.
+        */
 
     constexpr i32 ENCODING{153};
 
-    /**
-     * Month encoding for 30/31 day pattern starting from March 1st, to push
-     * February as the last month of the year. This increases stability when
-     * computating dates since leap years will never split standard months.
-    */
+        /**
+         * Month encoding for 30/31 day pattern starting from March 1st, 
+         * to push February as the last month of the year. This increases 
+         * computation stability whenever there are leap years.
+        */
    
     namespace era {
         constexpr i32 YEARS{400}; 
@@ -41,4 +42,3 @@ namespace tts::gregorian {
 
    } // namespace era.
 } // namespace tts::gregorian.
-
