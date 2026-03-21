@@ -3,8 +3,8 @@
 
 #include "cmp.hpp"
 #include "date/constants.hpp"
-#include "date/exceptions.hpp"
 #include "date/date.hpp"
+#include "date/exceptions.hpp"
 
 
 namespace tts {
