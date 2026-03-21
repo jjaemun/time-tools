@@ -7,7 +7,6 @@
 
 
 namespace tts {
-    
     // copy-to-conversions.
     [[nodiscard]]
     constexpr i32 to_unix_serial(Date date) noexcept {
@@ -59,6 +58,5 @@ namespace tts {
 
         return Date{serial - julian::date::OFFSET};
     }
-
 } // namespace tts.
 
