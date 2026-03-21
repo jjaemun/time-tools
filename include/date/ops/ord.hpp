@@ -19,7 +19,6 @@ namespace tts {
     constexpr auto operator<=>(Date lhs, Date rhs) noexcept {
         return lhs.value <=> rhs.value;
     }
-
     #else 
         
         /**
@@ -47,7 +46,6 @@ namespace tts {
     constexpr bool operator>(Date lhs, Date rhs) noexcept {
         return cmpgt(lhs.value, rhs.value);
     }
-
     #endif
 
     // (in)equality! 
