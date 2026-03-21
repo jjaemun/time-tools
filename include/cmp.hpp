@@ -36,6 +36,6 @@ namespace tts {
     template <typename T>
     [[nodiscard]]
     constexpr bool cmpge(T a, T b) noexcept {
-        return assert(a >= b);
+        return (a >= b);
     }
 } // namespace tts.
