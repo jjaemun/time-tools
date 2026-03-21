@@ -7,7 +7,9 @@
 namespace tts::err {
     // types!
     enum class date {
-        invalid
+        invalid,
+        overflow,
+        underflow
     };
 
     // descriptors!
@@ -22,6 +24,12 @@ namespace tts::err {
             case (date::invalid):
                 return "Date outside valid interval.";
             
+            case (date::overflow):
+                return "Date arithmetic overflow.";
+
+            case (date::underflow):
+                return "Date arithmetic underflow.";
+
             default:
                 // c++23 only std::unreachable().
                 __builtin_unreachable(); 
