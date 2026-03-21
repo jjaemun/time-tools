@@ -16,7 +16,7 @@ namespace tts {
 
     [[nodiscard]]
     constexpr i32 to_excel_serial(Date date) noexcept {
-        return  date.to_excel_serial;
+        return  date.to_excel_serial();
     }
     [[nodiscard]]
     constexpr i32 to_murex_serial(Date date) noexcept {
