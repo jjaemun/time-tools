@@ -26,7 +26,19 @@ namespace tts::gregorian {
          * to push February as the last month of the year. This increases 
          * computation stability whenever there are leap years.
         */
-   
+
+    constexpr i32 CYCLE4Y{1460};
+
+        /**
+         * Days in a 4-year cycle excluding leap days.
+        */
+
+    constexpr i32 CYCLE100Y{36524};
+
+        /**
+         * Days in a 100-year cycle excluding the 400-year correction.
+        */
+
     namespace era {
         constexpr i32 YEARS{400}; 
 
