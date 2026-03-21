@@ -8,9 +8,8 @@ namespace tts {
     class CivilDate final {
     
         /** 
-         * Human-readable (proletic gregorian) date abstraction. It is format
-         * agnostic, in the sense that any representation that we decide to 
-         * impose is attributed at callsite through the fmt module.
+         * Human-readable (proletic gregorian) date abstraction. Should only
+         * exist through tts::Date at the boundary, i.e., no native computations.
         */
 
     public:
