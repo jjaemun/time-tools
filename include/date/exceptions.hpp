@@ -14,8 +14,8 @@ namespace tts {
          * error handling.
         */
 
-        public:
-            explicit DateError(const err::date &code) :
-                std::runtime_error(err::to_str(code)) {}
+    public:
+        explicit DateError(const err::date &code) :
+            std::runtime_error(err::to_str(code)) {}
     };
 } // namespace tts.
