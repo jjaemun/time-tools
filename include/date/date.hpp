@@ -2,7 +2,10 @@
 
 
 #include "constants.hpp"
+#include "errors.hpp"
+#include "exceptions.hpp"
 #include "gregorian/gregorian.hpp"
+#include "validation.hpp"
 
 
 namespace tts {
@@ -10,11 +13,58 @@ namespace tts {
     
         /** 
          * Date abstraction. Internally tracks days from
-         * unix epoch (native).
+         * unix epoch (native). Guarantees valid state.
         */
 
-    public:
+    private:
         i32 value;
+
+        // constructor!
+        explicit noexcept Date(i32 value_) noexcept 
+            : value(value_) {}
+
+    public:
+        // named-constructors!
+        [[nodiscard]]
+        static constexpr Date from_unix_serial(i32 serial) {
+            if (!unix::date::is_valid(serial))
+                throw DateError(err::date::invalid);
+    
+            return Date{serial};
+        }
+    
+        [[nodiscard]]
+        static constexpr Date from_excel_serial(i32 serial) {
+            if (!excel::date::is_valid(serial))
+                throw DateError(err::date::invalid);
+    
+            return Date{serial - excel::date::OFFSET};
+        }
+
+        [[nodiscard]]
+        static constexpr Date from_murex_serial(i32 serial) {
+            if (!murex::date::is_valid(serial))
+                throw DateError(err::date::invalid);
+
+            return Date{serial - murex::date::OFFSET};
+        }
+
+        [[nodiscard]]
+        static constexpr Date from_julian_serial(i32 serial) {
+            if (!julian::date::is_valid(serial))
+                throw DateError(err::date::invalid);
+
+            return Date{serial - julian::date::OFFSET};
+        }
+
+        [[nodiscard]]
+        static constexpr Date from_civil(CivilDate civil) {
+            const auto serial = gregorian::serial_from_civil(civil);
+            if (!unix::date::is_valid(serial))
+                throw DateError(err::date::invalid);
+
+            return Date{serial};
+        }
 
         // copy-accessors!
         [[nodiscard]] 
@@ -50,6 +100,12 @@ namespace tts {
 
         // mutable-ref-accessor!
         constexpr i32 &as_mut_unix_serial() noexcept {
+
+            /**
+             * Beware, it invokes mutability and so maintaining a valid
+             * state is the callee's responsibility.
+            */
+
             return value;
         }       
 
