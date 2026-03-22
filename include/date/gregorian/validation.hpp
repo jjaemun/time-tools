@@ -2,6 +2,7 @@
 
 
 #include "algorithms.hpp"
+#include "cmp.hpp"
 #include "constants.hpp"
 
 
