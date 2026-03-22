@@ -7,7 +7,7 @@
 
 
 namespace tts::gregorian {
-    // algorithms! (H. Hinnant, (2021))
+    // helpers!
     [[nodiscard]] 
     constexpr u16 encode_month(i32 month) noexcept {
           
@@ -36,6 +36,7 @@ namespace tts::gregorian {
             return emonth - 9;
     }
 
+    // algorithms! (H. Hinnant, (2021))
     [[nodiscard]]
     constexpr CivilDate civil_from_serial(i32 serial) noexcept {
         
@@ -60,7 +61,7 @@ namespace tts::gregorian {
         const auto eday = gregorian - current 
             * era::DAYS; 
         // year of era.
-        const auto (eyear = eday - 
+        const auto eyear = (eday - 
             (eday / CYCLE4Y) + (eday / CYCLE100Y) 
                 - (eday / era::DAYS)) / DAYS;  
 
@@ -125,4 +126,37 @@ namespace tts::gregorian {
         return (current * era::DAYS + 
             eday - OFFSET);
     }
-} // namespace gregorian.
+
+
+    // predicates!
+    [[nodiscard]]
+    constexpr bool is_leap(CivilDate civil) noexcept {
+        return civil.is_leap();
+    }
+        
+    [[nodiscard]]
+    constexpr bool is_start_of_month(CivilDate civil) noexcept {
+        return civil.is_start_of_month();
+    }
+
+    [[nodiscard]]
+    constexpr bool is_end_of_month(CivilDate civil) noexcept {
+        return civil.is_end_of_month();
+    }
+
+    [[nodiscard]]
+    constexpr bool is_start_of_year(CivilDate civil) noexcept {
+        return civil.is_start_of_year();
+    }
+    
+    [[nodiscard]] 
+    constexpr bool is_end_of_year(CivilDate civil) noexcept {
+        return civil.is_end_of_year();
+    }
+
+    // attr!
+    [[nodiscard]]
+    constexpr u16 days_in_month(CivilDate civil) noexcept {
+        return civil.days_in_month();
+    }
+} // namespace tts::gregorian.
