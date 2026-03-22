@@ -91,6 +91,7 @@ namespace tts::gregorian {
             day
         };
     }
+
     [[nodiscard]]
     constexpr i32 serial_from_civil(CivilDate civil) noexcept {
 
