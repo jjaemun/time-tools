@@ -102,7 +102,7 @@ namespace tts {
         [[nodiscard]]
         constexpr bool is_end_of_year() const noexcept {
             return (cmpeq(day, u16{31}) && 
-                cmpeq(month, u16{12});         
+                cmpeq(month, u16{12}));         
         }
     };
 } // namespace tts.
