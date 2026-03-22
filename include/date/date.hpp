@@ -112,17 +112,17 @@ namespace tts {
         // gregorian decompositions!
         [[nodiscard]]
         constexpr i32 year() const noexcept {
-            return to_civil().year;
+            return to_civil().get_year();
         }
 
         [[nodiscard]]
         constexpr u16 month() const noexcept {
-            return to_civil().month;
+            return to_civil().get_month();
         }
 
         [[nodiscard]]
         constexpr u16 day() const noexcept {
-            return to_civil().day;
+            return to_civil().get_day();
         }
 
         // serial predicates!
