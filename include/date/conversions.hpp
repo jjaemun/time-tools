@@ -28,6 +28,11 @@ namespace tts {
         return  date.to_julian_serial();
     }
  
+    [[nodiscard]]
+    constexpr CivilDate to_civil(Date date) noexcept {
+        return  date.to_civil();
+    }
+ 
     // copy-from-conversions.
     [[nodiscard]]
     constexpr Date from_unix_serial(i32 serial) {
@@ -59,6 +64,15 @@ namespace tts {
             throw DateError(err::date::invalid);
 
         return Date{serial - julian::date::OFFSET};
+    }
+
+    [[nodiscard]]
+    constexpr Date from_civil(CivilDate civil) {
+        const auto serial = gregorian::serial_from_civil(civil);
+        if (!unix::date::is_valid(serial))
+            throw DateError(err::date::invalid);
+
+        return Date{serial};
     }
 } // namespace tts.
 
