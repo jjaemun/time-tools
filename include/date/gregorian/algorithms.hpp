@@ -9,7 +9,7 @@
 namespace tts::gregorian {
     // algorithms! (H. Hinnant, (2021))
     [[nodiscard]] 
-    constexpr i32 encode_month(i32 month) noexcept {
+    constexpr u16 encode_month(i32 month) noexcept {
           
         /**
          * Returns integer in the range [0, 11] denoting the 
@@ -23,7 +23,7 @@ namespace tts::gregorian {
     }
  
     [[nodiscard]] 
-    constexpr i32 decode_month(i32 emonth) noexcept {
+    constexpr u16 decode_month(i32 emonth) noexcept {
           
         /**
          * Returns integer in the range [1, 12] denoting the 
@@ -149,20 +149,31 @@ namespace tts::gregorian {
             // euclidean division.
             current = ((gregorian- era::DAYS) / 
                 era::DAYS);
-  
-        const auto eday = (gregorian - current * era::DAYS); 
-        const auto eyear = eyear_from_eday(eday);  
+ 
+        // day of era.
+        const auto eday = gregorian - current 
+            * era::DAYS; 
+        // year of era.
+        const auto (eyear = eday - (eday / CYCLE4Y) + 
+            (eday / CYCLE100Y) - (eday / era::DAYS)) / DAYS;  
 
-        const auto year = (eyear + current * era::YEARS);
-        const auto yday = yday_from_eday_and_eyear(eday, eyear);
+        // year.
+        const auto year = eyear + current 
+            * era::YEARS;
+        // day of year.
+        const auto yday = eday - ((DAYS * eyear) +
+            (eyear / 4) - (eyear / 100));
 
-        const auto emonth = emonth_from_yday(yday);
-        const auto month = static_cast<u16>(decode_month(emonth));
+        // march-first encoded month.
+        const auto emonth = (5 * yday + 2) / ENCODING;
+        // standard month.
+        const auto month = decode_month(emonth);
+        // correction if month from previous year.
         const auto correction = static_cast<i32>(month <= 2);
-        
-        const auto day = static_cast<u16>(
-            mday_from_yday_and_emonth(yday, emonth)
-        );        
+        // month day.
+        const auto day = static_cast<u16>
+            (yday - (ENCODING * emonth + 2) 
+                / 5 + 1);        
 
         return CivilDate{
             year + correction,
@@ -191,9 +202,15 @@ namespace tts::gregorian {
             current = ((year - era::YEARS + 1)
                 / era::YEARS);
 
-        const auto eyear = year - current * era::YEARS;
-        const auto yday = civil.day - 1 + yday_from_emonth(emonth);
-        const auto eday = eday_from_yday_and_eyear(yday, eyear);
+        // year of era.
+        const auto eyear = year - current * 
+            era::YEARS;
+        // day of year.
+        const auto yday = civil.day - 1 + 
+            (ENCODING * emonth + 2) / 5;
+        // day of era.
+        const auto eday = ((DAYS * eyear) + 
+            (eyear / 4) - (eyear / 100) + yday);
 
         return (current * era::DAYS + 
             eday - OFFSET);
