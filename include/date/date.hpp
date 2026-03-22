@@ -59,7 +59,7 @@ namespace tts {
 
         [[nodiscard]]
         static constexpr Date from_civil(CivilDate civil) {
-            const auto serial = gregorian::serial_from_civil(civil);
+            const auto serial = gregorian::unix_serial_from_civil(civil);
             if (!unix::date::is_valid(serial))
                 throw DateError(err::date::invalid);
 
@@ -89,7 +89,7 @@ namespace tts {
         
         [[nodiscard]] 
         constexpr CivilDate to_civil() const noexcept {
-            return gregorian::civil_from_serial(value);
+            return gregorian::civil_from_unix_serial(value);
         }
 
         // immutable-ref-accessor!
