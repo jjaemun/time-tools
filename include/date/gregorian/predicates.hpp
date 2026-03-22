@@ -5,7 +5,7 @@
 
 namespace tts::gregorian {
     // predicates!
-i   [[nodiscard]]
+    [[nodiscard]]
     constexpr bool is_leap(CivilDate civil) noexcept {
         return civil.is_leap();
     }
