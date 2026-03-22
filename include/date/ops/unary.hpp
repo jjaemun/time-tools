@@ -10,7 +10,7 @@
 namespace tts {
     // prefix!
     inline Date &operator++(Date &date) {
-        if (!cmplt(date.as_unix_serial(), unix::date::MAX))
+        if (!cmplt(date.to_unix_serial(), unix::date::MAX))
             throw DateError(err::date::overflow);
 
         ++date.as_mut_unix_serial();
@@ -18,7 +18,7 @@ namespace tts {
     }
     
     inline Date &operator--(Date &date) {
-        if (!cmpgt(date.as_unix_serial(), unix::date::MIN))
+        if (!cmpgt(date.to_unix_serial(), unix::date::MIN))
             throw DateError(err::date::underflow);
 
         --date.as_mut_unix_serial();
@@ -28,7 +28,7 @@ namespace tts {
     //postfix!
     [[nodiscard]]
     inline Date operator++(Date &date, int) {
-        if (!cmplt(date.as_unix_serial(), unix::date::MAX))
+        if (!cmplt(date.to_unix_serial(), unix::date::MAX))
             throw DateError(err::date::overflow);
 
         auto deepcopy = date;
@@ -39,7 +39,7 @@ namespace tts {
 
     [[nodiscard]]
     inline Date operator--(Date &date, int) {
-        if (!cmpgt(date.as_unix_serial(), unix::date::MIN))
+        if (!cmpgt(date.to_unix_serial(), unix::date::MIN))
             throw DateError(err::date::underflow);
 
         auto deepcopy = date;
