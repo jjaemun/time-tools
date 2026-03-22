@@ -18,7 +18,7 @@ namespace tts {
     // spaceship!
     [[nodiscard]]
     constexpr auto operator<=>(Date lhs, Date rhs) noexcept {
-        return lhs.value <=> rhs.value;
+        return lhs.as_unix_serial() <=> rhs.as_unix_serial();
     }
 
     // (in)equality! 
@@ -30,41 +30,41 @@ namespace tts {
          * equality operator overload.
          */
 
-        return cmpeq(lhs.value, rhs.value);
+        return cmpeq(lhs.as_unix_serial(), rhs.as_unix_serial());
     }
     #else
 
     // partial ord!
     [[nodiscard]]
     constexpr bool operator<=(Date lhs, Date rhs) noexcept {
-        return cmple(lhs.value, rhs.value);
+        return cmple(lhs.as_unix_serial(), rhs.as_unix_serial());
     }
 
     [[nodiscard]]
     constexpr bool operator>=(Date lhs, Date rhs) noexcept {
-        return cmpge(lhs.value, rhs.value);
+        return cmpge(lhs.as_unix_serial(), rhs.as_unix_serial());
     }
 
     // total ord!
     [[nodiscard]]
     constexpr bool operator<(Date lhs, Date rhs) noexcept {
-        return cmplt(lhs.value, rhs.value);
+        return cmplt(lhs.as_unix_serial(), rhs.as_unix_serial());
     }
 
     [[nodiscard]]
     constexpr bool operator>(Date lhs, Date rhs) noexcept {
-        return cmpgt(lhs.value, rhs.value);
+        return cmpgt(lhs.as_unix_serial(), rhs.as_unix_serial());
     }
 
     // (in)equality! 
     [[nodiscard]]
     constexpr bool operator==(Date lhs, Date rhs) noexcept {
-        return cmpeq(lhs.value, rhs.value);
+        return cmpeq(lhs.as_unix_serial(), rhs.as_unix_serial());
     }
 
     [[nodiscard]]
     constexpr bool operator!=(Date lhs, Date rhs) noexcept {
-        return cmpneq(lhs.value, rhs.value);
+        return cmpneq(lhs.as_unix_serial(), rhs.as_unix_serial());
     }   
     #endif
 } // namespace tts.
