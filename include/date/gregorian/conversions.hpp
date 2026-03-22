@@ -36,6 +36,7 @@ namespace tts::gregorian {
             return emonth - 9;
     }
 
+
     // algorithms! (H. Hinnant, (2021))
     [[nodiscard]]
     constexpr CivilDate civil_from_unix_serial(i32 serial) noexcept {
@@ -86,11 +87,8 @@ namespace tts::gregorian {
             (yday - (ENCODING * emonth + 2) 
                 / 5 + 1);        
 
-        return CivilDate{
-            year + correction,
-            month,
-            day
-        };
+        return CivilDate::from_ymd_unsafe(year + correction,
+                                          month, day);
     }
 
     [[nodiscard]]
@@ -101,9 +99,9 @@ namespace tts::gregorian {
          * date.
          */
 
-        const auto emonth = encode_month(civil.month);
-        const auto year = civil.year - 
-            static_cast<i32>(civil.month <= 2);
+        const auto emonth = encode_month(civil.get_month());
+        const auto year = civil.get_year() - 
+            static_cast<i32>(civil.get_month() <= 2);
 
         i32 current{};
         if (cmpge(year, 0))
@@ -117,7 +115,7 @@ namespace tts::gregorian {
         const auto eyear = year - current * 
             era::YEARS;
         // day of year.
-        const auto yday = civil.day - 1 + 
+        const auto yday = civil.get_day() - 1 + 
             (ENCODING * emonth + 2) / 5;
         // day of era.
         const auto eday = ((DAYS * eyear) + 
