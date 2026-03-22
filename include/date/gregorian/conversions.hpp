@@ -36,7 +36,6 @@ namespace tts::gregorian {
             return emonth - 9;
     }
 
-
     // algorithms! (H. Hinnant, (2021))
     [[nodiscard]]
     constexpr CivilDate civil_from_unix_serial(i32 serial) noexcept {
