@@ -1,6 +1,10 @@
 #pragma once
 
 
+#include "algorithms.hpp"
+#include "constants.hpp"
+#include "exceptions.hpp"
+#include "validation.hpp"
 #include "types.hpp"
 #include "cmp.hpp"
 
@@ -13,74 +17,68 @@ namespace tts {
          * exist through tts::Date at the boundary, i.e., no native computations.
         */
 
-    public:
+    private:
         i32 year;
         u16 month;
         u16 day;
 
+        // constructor!
+        explicit constexpr CivilDate(i32 year_, u16 month_, u16 day_) noexcept
+            : year(year_), month(month_), day(day_) {}
+        
+    public:
+        // named-constructors!
+        [[nodiscard]]
+        static constexpr CivilDate from_ymd(i32 year, u16 month, u16 day) {
+            if (!gregorian::is_valid_year(year))
+                throw CivilDateError(err::gregorian::year);
+
+            if (!gregorian::is_valid_month(month))
+                throw CivilDateError(err::gregorian::month);
+
+            if (!gregorian::is_valid_day(year, month, day))
+                throw CivilDateError(err::gregorian::day);
+        
+            return CivilDate{year, month, day};
+        }
+        
+        [[nodiscard]]
+        static constexpr CivilDate from_ymd_unsafe(i32 year, u16 month, u16 day) noexcept {
+
+            /**
+             * Beware **unsafe**, does not check date is valid. Internal
+             * usage mainly, callee owns the consequences. 
+            */
+
+            return CivilDate{year, month, day};
+        }
+
+        // accessors!
+        [[nodiscard]]
+        constexpr i32 get_year() const noexcept {
+            return year;
+        }
+        
+        [[nodiscard]]
+        constexpr u16 get_month() const noexcept {
+            return month;
+        }       
+        
+        [[nodiscard]]
+        constexpr u16 get_day() const noexcept {
+            return day;
+        }       
+
         // attr!
         [[nodiscard]]
         constexpr u16 days_in_month() const noexcept {
-            switch (month) {
-                case (1):
-                    // january.
-                    [[fallthrough]];
-
-                case (3):  
-                    // march.
-                    [[fallthrough]];
-
-                case (5):
-                    // may.
-                    [[fallthrough]];
-
-                case (7):
-                    // july.
-                    [[fallthrough]];
-
-                case (8):
-                    // august.
-                    [[fallthrough]];
-
-                case (10):
-                    // october.
-                    [[fallthrough]];
-                                
-                case (12): 
-                    // december.
-                    return 31;
-
-                case (4):
-                    // april.
-                    [[fallthrough]];
-            
-                case (6):
-                    // june.
-                    [[fallthrough]];
-
-                case (9):
-                    // september.
-                    [[fallthrough]];
-
-                case (11):
-                    // november.
-                    return 30;
-                        
-                case (2):
-                    if (is_leap()) [[unlikely]]
-                        return 29;
-                    return 28;
-
-                default:
-                    __builtin_unreachable();
-            }
+            return gregorian::days_in_month(year, month);
         }
 
         // predicates!
         [[nodiscard]]
         constexpr bool is_leap() const noexcept {
-            return (cmpeq(year % 4, 0) && cmpneq(year % 100, 0))
-                || cmpeq(year % 400, 0);
+            return gregorian::is_leap(year);
         }
 
         [[nodiscard]]
