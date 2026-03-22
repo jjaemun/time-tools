@@ -60,8 +60,9 @@ namespace tts::gregorian {
         const auto eday = gregorian - current 
             * era::DAYS; 
         // year of era.
-        const auto (eyear = eday - (eday / CYCLE4Y) + 
-            (eday / CYCLE100Y) - (eday / era::DAYS)) / DAYS;  
+        const auto (eyear = eday - 
+            (eday / CYCLE4Y) + (eday / CYCLE100Y) 
+                - (eday / era::DAYS)) / DAYS;  
 
         // year.
         const auto year = eyear + current 
@@ -71,11 +72,14 @@ namespace tts::gregorian {
             (eyear / 4) - (eyear / 100));
 
         // march-first encoded month.
-        const auto emonth = (5 * yday + 2) / ENCODING;
+        const auto emonth = (5 * yday + 2) 
+            / ENCODING;
         // standard month.
         const auto month = decode_month(emonth);
         // correction if month from previous year.
-        const auto correction = static_cast<i32>(month <= 2);
+        const auto correction = static_cast<i32>
+            (month <= 2);
+        
         // month day.
         const auto day = static_cast<u16>
             (yday - (ENCODING * emonth + 2) 
@@ -87,7 +91,6 @@ namespace tts::gregorian {
             day
         };
     }
-
     [[nodiscard]]
     constexpr i32 serial_from_civil(CivilDate civil) noexcept {
 
