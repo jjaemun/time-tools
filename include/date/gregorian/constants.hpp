@@ -53,4 +53,49 @@ namespace tts::gregorian {
             */
 
    } // namespace era.
+
+    namespace year {
+        constexpr i32 MIN{1980};
+            
+            /**
+             * Years lower bound.
+            */
+
+        constexpr i32 MAX{2200};
+            
+            /**
+             * Years upper bound.
+            */
+
+    } // namespace year.
+
+    namespace month {
+        constexpr u16 MIN{1};
+            
+            /**
+             * Civil date months lower bound.
+            */
+
+        constexpr u16 MAX{12};
+            
+            /**
+             * Civil date months upper bound.
+            */
+
+    } // namespace year.
+
+    namespace day {
+        constexpr u16 MIN{1};
+            
+            /**
+             * Civil date days lower bound.
+            */
+
+        constexpr u16 MAX{31};
+            
+            /**
+             * Civil date days upper bound.
+            */
+
+    } // namespace year.
 } // namespace tts::gregorian.
