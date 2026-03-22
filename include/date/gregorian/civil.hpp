@@ -85,7 +85,7 @@ namespace tts {
 
         [[nodiscard]]
         constexpr bool is_start_of_month() const noexcept {
-            return cmpeq(day, (u16)1);         
+            return cmpeq(day, u16{1});         
         }
 
         [[nodiscard]]
@@ -96,13 +96,13 @@ namespace tts {
         [[nodiscard]]
         constexpr bool is_start_of_year() const noexcept {
             return (is_start_of_month() &&
-                cmpeq(month, (u16)1));         
+                cmpeq(month, u16{1}));         
         }
         
         [[nodiscard]]
         constexpr bool is_end_of_year() const noexcept {
-            return (cmpeq(day, (u16)31) && 
-                cmpeq(month, (u16)12));         
+            return (cmpeq(day, u16{31}) && 
+                cmpeq(month, u16{12});         
         }
     };
 } // namespace tts.
