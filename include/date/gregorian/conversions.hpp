@@ -38,7 +38,7 @@ namespace tts::gregorian {
 
     // algorithms! (H. Hinnant, (2021))
     [[nodiscard]]
-    constexpr CivilDate civil_from_serial(i32 serial) noexcept {
+    constexpr CivilDate civil_from_unix_serial(i32 serial) noexcept {
         
         /**
          * Returns civil (human-readable) date from unix 
@@ -94,7 +94,7 @@ namespace tts::gregorian {
     }
 
     [[nodiscard]]
-    constexpr i32 serial_from_civil(CivilDate civil) noexcept {
+    constexpr i32 unix_serial_from_civil(CivilDate civil) noexcept {
 
         /**
          * Returns unix serial from civil (human-readable) 
