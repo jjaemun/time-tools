@@ -20,7 +20,7 @@ namespace tts {
         i32 value;
 
         // constructor!
-        explicit noexcept Date(i32 value_) noexcept 
+        explicit constexpr Date(i32 value_) noexcept 
             : value(value_) {}
 
     public:
@@ -102,8 +102,8 @@ namespace tts {
         constexpr i32 &as_mut_unix_serial() noexcept {
 
             /**
-             * Beware, it invokes mutability and so maintaining a valid
-             * state is the callee's responsibility.
+             * Beware **unsafe**, it invokes mutability and so maintaining 
+             * a valid state is the callee's responsibility.
             */
 
             return value;
