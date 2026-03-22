@@ -68,5 +68,54 @@ namespace tts {
         constexpr u16 day() const noexcept {
             return to_civil().day;
         }
+
+        // serial predicates!
+        [[nodiscard]]
+        constexpr bool is_weekend() const noexcept {
+        
+            /**
+             * Because 1970-01-01 (unix epoch) was a thursday, we offset
+             * by 3 then check from 'monday'.
+            */
+
+            return (value + 3) % 7 >= 5;
+        }
+
+        [[nodiscard]]
+        constexpr bool is_weekday() const noexcept {
+            return (!is_weekend());
+        }
+
+        // gregorian predicates!
+        [[nodiscard]]
+        constexpr bool is_leap() const noexcept {
+            return to_civil().is_leap();
+        }
+        
+        [[nodiscard]]
+        constexpr bool is_start_of_month() const noexcept {
+            return to_civil().is_start_of_month();
+        }
+        
+        [[nodiscard]]
+        constexpr bool is_end_of_month() const noexcept {
+            return to_civil().is_end_of_month();
+        }
+         
+        [[nodiscard]]
+        constexpr bool is_start_of_year() const noexcept {
+            return to_civil().is_start_of_year();
+        }
+ 
+        [[nodiscard]]
+        constexpr bool is_end_of_year() const noexcept {
+            return to_civil().is_end_of_year();
+        }
+
+        // attr!
+        [[nodiscard]]
+        constexpr u16 days_in_month() const noexcept {
+            return to_civil().days_in_month();
+        }
     };
 } // namespace tts.
