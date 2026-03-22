@@ -20,7 +20,7 @@ set(
 
 foreach(directory ${directories})
 
-    # --vertical...
+    # --mirroring...
 
     add_subdirectory(${directory})
 endforeach()
