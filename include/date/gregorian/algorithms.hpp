@@ -73,7 +73,7 @@ namespace tts::gregorian {
             case (2):
                 if (is_leap(year)) [[unlikely]]
                     return 29;
-                    return 28;
+                return 28;
 
             default:
                 __builtin_unreachable();
