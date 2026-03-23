@@ -5,6 +5,14 @@
 
 
 namespace tts {
+    // forward declarations!
+    class MilliSeconds;
+    class Seconds;
+    class Minutes;
+    class Hours;
+    class Days;
+    class Weeks;
+
     // linear!
     class MilliSeconds {
         
@@ -92,27 +100,27 @@ namespace tts {
         }
 
         [[nodiscard]]
-        static constexpr Seconds to_seconds() noexcept {
+        constexpr Seconds to_seconds() const noexcept {
             return Seconds::from_raw_milliseconds(value);
         }
         
         [[nodiscard]]
-        static constexpr Minutes to_minutes() noexcept {
+        constexpr Minutes to_minutes() const noexcept {
             return Minutes::from_raw_milliseconds(value);
         }
         
         [[nodiscard]]
-        static constexpr Hours to_hours() noexcept {
+        constexpr Hours to_hours() const noexcept {
             return Hours::from_raw_milliseconds(value);
         }
         
         [[nodiscard]]
-        static constexpr Days to_days() noexcept {
+        constexpr Days to_days() const noexcept {
             return Days::from_raw_milliseconds(value);
         }
         
         [[nodiscard]]
-        static constexpr Weeks to_weeks(Weeks weeks) noexcept {
+        constexpr Weeks to_weeks(Weeks weeks) const noexcept {
             return Weeks::from_raw_milliseconds(value);
         }
 
@@ -123,7 +131,7 @@ namespace tts {
         }
 
         // mutable-ref-accessor!
-        constexpr i32 &as_mut_count() const noexcept {
+        constexpr i32 &as_mut_count() noexcept {
             return value;
         }
     };
@@ -212,27 +220,27 @@ namespace tts {
         }
 
         [[nodiscard]]
-        static constexpr MilliSeconds to_milliseconds() noexcept {
+        constexpr MilliSeconds to_milliseconds() const noexcept {
             return Milliseconds::from_raw_seconds(value);
         }
         
         [[nodiscard]]
-        static constexpr Minutes to_minutes() noexcept {
+        constexpr Minutes to_minutes() const noexcept {
             return Minutes::from_raw_seconds(values);
         }
         
         [[nodiscard]]
-        static constexpr Hours to_hours() noexcept {
+        constexpr Hours to_hours() const noexcept {
             return Hours::from_raw_seconds(values);
         }
         
         [[nodiscard]]
-        static constexpr Days to_days() noexcept {
+        constexpr Days to_days() const noexcept {
             return Days::from_raw_seconds(values);
         }
         
         [[nodiscard]]
-        static constexpr Weeks from_weeks() noexcept {
+        constexpr Weeks to_weeks() const noexcept {
             return Weeks::from_raw_seconds(values);
         }
  
@@ -332,27 +340,27 @@ namespace tts {
         }
 
         [[nodiscard]]
-        static constexpr MilliSeconds to_milliseconds() noexcept {
+        constexpr MilliSeconds to_milliseconds() const noexcept {
             return MilliSeconds::from_raw_minutes(value);
         }
         
         [[nodiscard]]
-        static constexpr Seconds to_seconds() noexcept {
+        constexpr Seconds to_seconds() const noexcept {
             return Seconds::from_raw_minutes(value);
         }
         
         [[nodiscard]]
-        static constexpr Hours to_hours() noexcept {
+        constexpr Hours to_hours() const noexcept {
             return Hours::from_raw_minutes(value);
         }
         
         [[nodiscard]]
-        static constexpr Days to_days() noexcept {
+        constexpr Days to_days() const noexcept {
             return Days::from_raw_minutes(value);
         }
         
         [[nodiscard]]
-        static constexpr Weeks to_weeks() noexcept {
+        constexpr Weeks to_weeks() const noexcept {
             return Weeks::from_raw_minutes(value);
         }
  
@@ -450,7 +458,32 @@ namespace tts {
         constexpr i32 count() const noexcept {
             return value;
         }
-
+ 
+        [[nodiscard]]
+        constexpr MilliSeconds to_milliseconds() const noexcept {
+            return Milliseconds::from_raw_hours(value);
+        }
+        
+        [[nodiscard]]
+        constexpr Seconds to_seconds() const noexcept {
+            return Seconds::from_raw_hours(value);
+        }
+         
+        [[nodiscard]]
+        constexpr Minutes to_minutes() const noexcept {
+            return Minutes::from_raw_hours(value);
+        }       
+       
+        [[nodiscard]]
+        constexpr Days to_days(Days days) const noexcept {
+            return Days::from_raw_hours(value);
+        }
+        
+        [[nodiscard]]
+        constexpr Weeks to_weeks(Weeks weeks) const noexcept {
+            return Weeks::from_raw_hours(value);
+        }
+ 
         // immutable-ref-accessor!
         [[nodiscard]]
         constexpr const i32 &as_count() const noexcept {
@@ -546,6 +579,31 @@ namespace tts {
         constexpr i32 count() const noexcept {
             return value;
         }
+ 
+        [[nodiscard]]
+        constexpr MilliSeconds to_milliseconds() const noexcept {
+            return MilliSeconds::from_raw_days(value);
+        }
+        
+        [[nodiscard]]
+        constexpr Seconds to_seconds() const noexcept {
+            return Seconds::from_raw_days(value);
+        }
+         
+        [[nodiscard]]
+        constexpr Days to_minutes() const noexcept {
+            return Minutes::from_raw_days(value);
+        }       
+       
+        [[nodiscard]]
+        constexpr Days to_hours() const noexcept {
+            return Hours::from_raw_days(value);
+        }
+        
+        [[nodiscard]]
+        constexpr Weeks to_weeks() const noexcept {
+            return Weeks::from_raw_days(value);
+        }
         
         // immutable-ref-accessor!
         [[nodiscard]]
@@ -634,7 +692,7 @@ namespace tts {
         
         [[nodiscard]]
         static constexpr Weeks from_days(Days days) noexcept {
-            return form_raw_days(days.count());
+            return from_raw_days(days.count());
         }
  
         // copy-accessors!
@@ -643,6 +701,31 @@ namespace tts {
             return value;
         }
 
+        [[nodiscard]]
+        constexpr MilliSeconds to_milliseconds() const noexcept {
+            return MilliSeconds::from_raw_weeks(value);
+        }
+        
+        [[nodiscard]]
+        constexpr Seconds to_seconds() const noexcept {
+            return Seconds::from_raw_weeks(value);
+        }
+         
+        [[nodiscard]]
+        constexpr Weeks to_minutes() const noexcept {
+            return Minutes::from_raw_weeks(value);
+        }       
+       
+        [[nodiscard]]
+        static constexpr Weeks to_hours(Hours hours) const noexcept {
+            return Hours::from_raw_weeks(value);
+        }
+        
+        [[nodiscard]]
+        static constexpr Days to_days() const noexcept {
+            return form_raw_days(value);
+        }
+ 
         // immutable-ref-accessor!
         [[nodiscard]]
         constexpr const i32 &as_count() const noexcept {
