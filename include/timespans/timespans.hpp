@@ -21,6 +21,12 @@ namespace tts {
             : value(value_) {}
 
         // named-constructors!
+        
+            /**
+             * Weak types as base implementation and raw type
+             * interoperability.
+            */
+
         [[nodiscard]]
         static constexpr MilliSeconds from_raw_seconds(i32 seconds) noexcept {
             return MilliSeconds{seconds * i32{1000}};
@@ -48,6 +54,35 @@ namespace tts {
         static constexpr MilliSeconds from_raw_weeks(i32 weeks) noexcept {
             return MilliSeconds{weeks * i32{7} * i32{24} 
                 * i32{60} * i32{60} * i32{1000}};
+        }
+            
+            /**
+             * Strong types as main api.
+            */
+
+        [[nodiscard]]
+        static constexpr MilliSeconds from_seconds(Seconds seconds) noexcept {
+            return from_raw_seconds(seconds.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr MilliSeconds from_minutes(Minutes minutes) noexcept {
+            return from_raw_minutes(minutes.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr MilliSeconds from_hours(Hours hours) noexcept {
+            return from_raw_hours(hours.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr MilliSeconds from_days(Days days) noexcept {
+            return from_raw_days(days.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr MilliSeconds from_weeks(Weeks weeks) noexcept {
+            return from_raw_weeks(weeks.count());
         }
 
         // copy-accessors!
@@ -85,6 +120,12 @@ namespace tts {
             : value(value_) {}
 
         // named-constructors!
+            
+            /**
+             * Weak types as base implementation and raw type
+             * interoperability.
+            */
+
         [[nodiscard]]
         static constexpr Seconds from_raw_milliseconds(i32 milliseconds) noexcept {
             return Seconds{milliseconds / i32{1000}};
@@ -111,7 +152,36 @@ namespace tts {
             return Seconds{weeks * i32{7} * i32{24} 
                 * i32{60} * i32{60}};
         }
-   
+               
+            /**
+             * Strong types as main api.
+            */
+
+        [[nodiscard]]
+        static constexpr Seconds from_milliseconds(MilliSeconds milliseconds) noexcept {
+            return from_raw_milliseconds(milliseconds.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Seconds from_minutes(Minutes minutes) noexcept {
+            return from_raw_minutes(minutes.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Seconds from_hours(Hours hours) noexcept {
+            return from_raw_hours(hours.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Seconds from_days(Days days) noexcept {
+            return from_raw_days(days.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Seconds from_weeks(Weeks weeks) noexcept {
+            return from_raw_weeks(weeks.count());
+        }
+  
         // copy-accessors!
         [[nodiscard]]
         constexpr i32 count() const noexcept {
@@ -145,6 +215,12 @@ namespace tts {
             : value(value_) {}
 
         // named-constructors!
+        
+            /**
+             * Weak types as base implementation and raw type
+             * interoperability.
+            */
+
         [[nodiscard]]
         static constexpr Minutes from_raw_milliseconds(i32 milliseconds) noexcept {
             return Minutes{milliseconds / (i32{1000} 
@@ -171,7 +247,11 @@ namespace tts {
             return Minutes{weeks * i32{7} * i32{24} 
                 * i32{60}};
         }
-      
+                
+            /**
+             * Strong types as main api.
+            */
+
         // copy-accessors!
         [[nodiscard]]
         constexpr i32 count() const noexcept {
@@ -190,7 +270,6 @@ namespace tts {
         }
     };
 
-
     class Hours {
         
         /**
@@ -206,6 +285,12 @@ namespace tts {
             : value(value_) {}
         
         // named-constructors!
+            
+            /**
+             * Weak types as base implementation and raw type
+             * interoperability.
+            */
+
         [[nodiscard]]
         static constexpr Hours from_raw_milliseconds(i32 milliseconds) noexcept {
             return Hours{milliseconds / (i32{1000} 
@@ -232,7 +317,11 @@ namespace tts {
         static constexpr Hours from_raw_weeks(i32 weeks) noexcept {
             return Hours{weeks * i32{7} * i32{24}};
         }
-      
+                     
+            /**
+             * Strong types as main api.
+            */
+     
         // copy-accessors!
         [[nodiscard]]
         constexpr i32 count() const noexcept {
@@ -266,6 +355,12 @@ namespace tts {
             : value(value_) {}
         
         // named-constructors!
+        
+            /**
+             * Weak types as base implementation and raw type
+             * interoperability.
+            */
+
         [[nodiscard]]
         static constexpr Days from_raw_milliseconds(i32 milliseconds) noexcept {
             return Days{milliseconds / (i32{1000} 
@@ -286,22 +381,24 @@ namespace tts {
        
         [[nodiscard]]
         static constexpr Days from_raw_hours(i32 hours) noexcept {
-            return Days{days / i32{24}}; 
+            return Days{hours / i32{24}}; 
         }
         
         [[nodiscard]]
         static constexpr Days from_raw_weeks(i32 weeks) noexcept {
             return Hours{weeks * i32{7}};
         }
-      
+                      
+            /**
+             * Strong types as main api.
+            */
+
         // copy-accessors!
         [[nodiscard]]
         constexpr i32 count() const noexcept {
             return value;
         }
-
         
-
         // immutable-ref-accessor!
         [[nodiscard]]
         constexpr const i32 &as_count() const noexcept {
@@ -329,6 +426,12 @@ namespace tts {
             : value(value_) {}
         
         // named-constructors!
+            
+            /**
+             * Weak types as base implementation and raw type
+             * interoperability.
+            */
+
         [[nodiscard]]
         static constexpr Weeks from_raw_milliseconds(i32 milliseconds) noexcept {
             return Weeks{milliseconds / (i32{1000} * i32{60} 
@@ -349,14 +452,18 @@ namespace tts {
        
         [[nodiscard]]
         static constexpr Weeks from_raw_hours(i32 hours) noexcept {
-            return Weeks{days / (i32{24} * i32{7}}; 
+            return Weeks{hours / (i32{24} * i32{7})}; 
         }
         
         [[nodiscard]]
         static constexpr Weeks from_raw_days(i32 days) noexcept {
             return Weeks{days / i32{7}};
         }
-      
+                      
+            /**
+             * Strong types as main api.
+            */
+
         // copy-accessors!
         [[nodiscard]]
         constexpr i32 count() const noexcept {
