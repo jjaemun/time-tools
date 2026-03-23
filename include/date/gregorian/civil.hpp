@@ -27,30 +27,37 @@ namespace tts {
             : year(year_), month(month_), day(day_) {}
         
     public:
-        // named-constructors!
+        // runtime named-constructor!
         [[nodiscard]]
-        static constexpr CivilDate from_ymd(i32 year, u16 month, u16 day) {
-            if (!gregorian::is_valid_year(year))
+        static CivilDate from_ymd(i32 year_, u16 month_, u16 day_) {
+    
+            /**
+             * Non-constexpr to avoid cryptic compile errors (if throw
+             * path). General purpose constructor should be preferred.
+            */
+
+            if (!gregorian::is_valid_year(year_))
                 throw CivilDateError(err::gregorian::year);
 
-            if (!gregorian::is_valid_month(month))
+            if (!gregorian::is_valid_month(month_))
                 throw CivilDateError(err::gregorian::month);
 
-            if (!gregorian::is_valid_day(year, month, day))
+            if (!gregorian::is_valid_day(year_, month_, day_))
                 throw CivilDateError(err::gregorian::day);
         
-            return CivilDate{year, month, day};
+            return CivilDate{year_, month_, day_};
         }
-        
+    
+        // compile-time named-constructor!
         [[nodiscard]]
-        static constexpr CivilDate from_ymd_unsafe(i32 year, u16 month, u16 day) noexcept {
-
+        static constexpr CivilDate from_ymd_unsafe(i32 year_, u16 month_, u16 day_) noexcept {
+ 
             /**
              * Beware **unsafe**, does not check date is valid. Internal
              * usage mainly, callee owns the consequences. 
-            */
+            */   
 
-            return CivilDate{year, month, day};
+            return CivilDate{year_, month_, day_};
         }
 
         // accessors!
