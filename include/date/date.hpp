@@ -24,9 +24,9 @@ namespace tts {
             : value(value_) {}
 
     public:
-        // named-constructors!
+        // runtime-named-constructors!
         [[nodiscard]]
-        static constexpr Date from_unix_serial(i32 serial) {
+        static Date from_unix_serial(i32 serial) {
             if (!unix::date::is_valid(serial))
                 throw DateError(err::date::invalid);
     
@@ -34,7 +34,7 @@ namespace tts {
         }
     
         [[nodiscard]]
-        static constexpr Date from_excel_serial(i32 serial) {
+        static Date from_excel_serial(i32 serial) {
             if (!excel::date::is_valid(serial))
                 throw DateError(err::date::invalid);
     
@@ -42,7 +42,7 @@ namespace tts {
         }
 
         [[nodiscard]]
-        static constexpr Date from_murex_serial(i32 serial) {
+        static Date from_murex_serial(i32 serial) {
             if (!murex::date::is_valid(serial))
                 throw DateError(err::date::invalid);
 
@@ -50,7 +50,7 @@ namespace tts {
         }
 
         [[nodiscard]]
-        static constexpr Date from_julian_serial(i32 serial) {
+        static Date from_julian_serial(i32 serial) {
             if (!julian::date::is_valid(serial))
                 throw DateError(err::date::invalid);
 
@@ -58,11 +58,38 @@ namespace tts {
         }
 
         [[nodiscard]]
-        static constexpr Date from_civil(CivilDate civil) {
+        static Date from_civil(CivilDate civil) {
             const auto serial = gregorian::unix_serial_from_civil(civil);
             if (!unix::date::is_valid(serial))
                 throw DateError(err::date::invalid);
 
+            return Date{serial};
+        }
+
+        // compile-time-named-constructors!
+        [[nodiscard]]
+        static constexpr Date from_unix_serial_unsafe(i32 serial) noexcept {
+            return Date{serial};
+        }
+    
+        [[nodiscard]]
+        static constexpr Date from_excel_serial_unsafe(i32 serial) noexcept {
+            return Date{serial - excel::date::OFFSET};
+        }
+
+        [[nodiscard]]
+        static constexpr Date from_murex_serial_unsafe(i32 serial) noexcept {
+            return Date{serial - murex::date::OFFSET};
+        }
+
+        [[nodiscard]]
+        static constexpr Date from_julian_serial_unsafe(i32 serial) noexcept {
+            return Date{serial - julian::date::OFFSET};
+        }
+
+        [[nodiscard]]
+        static constexpr Date from_civil_unsafe(CivilDate civil) noexcept {
+            const auto serial = gregorian::unix_serial_from_civil(civil);
             return Date{serial};
         }
 
