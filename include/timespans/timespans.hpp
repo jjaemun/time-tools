@@ -252,6 +252,31 @@ namespace tts {
              * Strong types as main api.
             */
 
+        [[nodiscard]]
+        static constexpr Minutes from_milliseconds(MilliSeconds milliseconds) noexcept {
+            return from_raw_milliseconds(milliseconds.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Minutes from_seconds(Seconds seconds) noexcept {
+            return from_raw_seconds(seconds.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Minutes from_hours(Hours hours) noexcept {
+            return from_raw_hours(hours.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Minutes from_days(Days days) noexcept {
+            return from_raw_days(days.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Minutes from_weeks(Weeks weeks) noexcept {
+            return from_raw_weeks(weeks.count());
+        }
+ 
         // copy-accessors!
         [[nodiscard]]
         constexpr i32 count() const noexcept {
@@ -321,6 +346,31 @@ namespace tts {
             /**
              * Strong types as main api.
             */
+ 
+        [[nodiscard]]
+        static constexpr Hours from_milliseconds(MilliSeconds milliseconds) noexcept {
+            return from_raw_milliseconds(milliseconds.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Hours from_seconds(Seconds seconds) noexcept {
+            return from_raw_seconds(seconds.count());
+        }
+         
+        [[nodiscard]]
+        static constexpr Hours from_minutes(Minutes minutes) noexcept {
+            return from_raw_minutes(minutes.count());
+        }       
+       
+        [[nodiscard]]
+        static constexpr Hours from_days(Days days) noexcept {
+            return from_raw_days(days.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Hours from_weeks(Weeks weeks) noexcept {
+            return from_raw_weeks(weeks.count());
+        }
      
         // copy-accessors!
         [[nodiscard]]
@@ -393,6 +443,31 @@ namespace tts {
              * Strong types as main api.
             */
 
+        [[nodiscard]]
+        static constexpr Days from_milliseconds(MilliSeconds milliseconds) noexcept {
+            return from_raw_milliseconds(milliseconds.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Days from_seconds(Seconds seconds) noexcept {
+            return from_raw_seconds(seconds.count());
+        }
+         
+        [[nodiscard]]
+        static constexpr Days from_minutes(Minutes minutes) noexcept {
+            return from_raw_minutes(minutes.count());
+        }       
+       
+        [[nodiscard]]
+        static constexpr Days from_hours(Hours hours) noexcept {
+            return from_raw_hours(hours.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Days from_weeks(Weeks weeks) noexcept {
+            return from_raw_weeks(weeks.count());
+        }
+ 
         // copy-accessors!
         [[nodiscard]]
         constexpr i32 count() const noexcept {
@@ -464,6 +539,31 @@ namespace tts {
              * Strong types as main api.
             */
 
+        [[nodiscard]]
+        static constexpr Weeks from_milliseconds(MilliSeconds milliseconds) noexcept {
+            return from_raw_milliseconds(milliseconds.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Weeks from_seconds(Seconds seconds) noexcept {
+            return from_raw_seconds(seconds.count());
+        }
+         
+        [[nodiscard]]
+        static constexpr Weeks from_minutes(Minutes minutes) noexcept {
+            return from_raw_minutes(minutes.count());
+        }       
+       
+        [[nodiscard]]
+        static constexpr Weeks from_hours(Hours hours) noexcept {
+            return from_raw_hours(hours.count());
+        }
+        
+        [[nodiscard]]
+        static constexpr Weeks from_days(Days days) noexcept {
+            return form_raw_days(days.count());
+        }
+ 
         // copy-accessors!
         [[nodiscard]]
         constexpr i32 count() const noexcept {
