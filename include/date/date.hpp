@@ -25,6 +25,12 @@ namespace tts {
 
     public:
         // runtime-named-constructors!
+    
+            /**
+             * Non-constexpr to avoid cryptic compile errors (if throw
+             * path). General purpose constructor should be preferred. 
+            */
+
         [[nodiscard]]
         static Date from_unix_serial(i32 serial) {
             if (!unix::date::is_valid(serial))
@@ -67,6 +73,12 @@ namespace tts {
         }
 
         // compile-time-named-constructors!
+
+            /**
+             * Beware **unsafe**, should be avoided unless date is compile
+             * time valid.
+            */
+
         [[nodiscard]]
         static constexpr Date from_unix_serial_unsafe(i32 serial) noexcept {
             return Date{serial};
