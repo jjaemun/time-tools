@@ -50,8 +50,7 @@ namespace tts::gregorian {
         // era.
         i32 current{}; 
         if (cmpge(gregorian, 0))
-            current = gregorian / 
-                era::DAYS;
+            current = gregorian / era::DAYS;
         else
             // euclidean division.
             current = ((gregorian- era::DAYS) / 
