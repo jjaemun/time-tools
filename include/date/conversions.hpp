@@ -31,30 +31,56 @@ namespace tts {
         return  date.to_civil();
     }
  
-    // copy-from-conversions.
+    // safe copy-from-conversions.
     [[nodiscard]]
-    constexpr Date from_unix_serial(i32 serial) {
+    Date from_unix_serial(i32 serial) {
         return Date::from_unix_serial(serial);
     }
 
     [[nodiscard]]
-    constexpr Date from_excel_serial(i32 serial) {
+    Date from_excel_serial(i32 serial) {
         return Date::from_excel_serial(serial);
     }
 
     [[nodiscard]]
-    constexpr Date from_murex_serial(i32 serial) {
+    Date from_murex_serial(i32 serial) {
         return Date::from_murex_serial(serial);
     }
 
     [[nodiscard]]
-    constexpr Date from_julian_serial(i32 serial) {
+    Date from_julian_serial(i32 serial) {
         return Date::from_julian_serial(serial);
     }
 
     [[nodiscard]]
-    constexpr Date from_civil(CivilDate civil) {
+    Date from_civil(CivilDate civil) {
         return Date::from_civil(civil);
+    }
+ 
+    // unsafe copy-from-conversions.
+    [[nodiscard]]
+    constexpr Date from_unix_serial_unsafe(i32 serial) noexcept {
+        return Date::from_unix_serial_unsafe(serial);
+    }
+
+    [[nodiscard]]
+    constexpr Date from_excel_serial_unsafe(i32 serial) noexcept {
+        return Date::from_excel_serial_unsafe(serial);
+    }
+
+    [[nodiscard]]
+    constexpr Date from_murex_serial_unsafe(i32 serial) noexcept {
+        return Date::from_murex_serial_unsafe(serial);
+    }
+
+    [[nodiscard]]
+    constexpr Date from_julian_serial_unsafe(i32 serial) noexcept {
+        return Date::from_julian_serial_unsafe(serial);
+    }
+
+    [[nodiscard]]
+    constexpr Date from_civil_unsafe(CivilDate civil) noexcept {
+        return Date::from_civil_unsafe(civil);
     }
 } // namespace tts.
 
