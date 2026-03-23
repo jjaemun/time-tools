@@ -5,32 +5,6 @@
 
 
 namespace tts {
-    // copy-to-conversions.
-    [[nodiscard]]
-    constexpr i32 to_unix_serial(Date date) noexcept {
-        return  date.to_unix_serial();
-    }
-
-    [[nodiscard]]
-    constexpr i32 to_excel_serial(Date date) noexcept {
-        return  date.to_excel_serial();
-    }
-
-    [[nodiscard]]
-    constexpr i32 to_murex_serial(Date date) noexcept {
-        return  date.to_murex_serial();
-    }
-
-    [[nodiscard]]
-    constexpr i32 to_julian_serial(Date date) noexcept {
-        return  date.to_julian_serial();
-    }
- 
-    [[nodiscard]]
-    constexpr CivilDate to_civil(Date date) noexcept {
-        return  date.to_civil();
-    }
- 
     // safe copy-from-conversions.
     [[nodiscard]]
     Date from_unix_serial(i32 serial) {
@@ -81,6 +55,32 @@ namespace tts {
     [[nodiscard]]
     constexpr Date from_civil_unsafe(CivilDate civil) noexcept {
         return Date::from_civil_unsafe(civil);
+    }
+    
+    // copy-to-conversions.
+    [[nodiscard]]
+    constexpr i32 to_unix_serial(Date date) noexcept {
+        return  date.to_unix_serial();
+    }
+
+    [[nodiscard]]
+    constexpr i32 to_excel_serial(Date date) noexcept {
+        return  date.to_excel_serial();
+    }
+
+    [[nodiscard]]
+    constexpr i32 to_murex_serial(Date date) noexcept {
+        return  date.to_murex_serial();
+    }
+
+    [[nodiscard]]
+    constexpr i32 to_julian_serial(Date date) noexcept {
+        return  date.to_julian_serial();
+    }
+ 
+    [[nodiscard]]
+    constexpr CivilDate to_civil(Date date) noexcept {
+        return  date.to_civil();
     }
 } // namespace tts.
 
