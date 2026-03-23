@@ -50,7 +50,24 @@ namespace tts {
                 * i32{60} * i32{60} * i32{1000}};
         }
 
-        // copy-accessors.
+        // copy-accessors!
+        [[nodiscard]]
+        constexpr i32 count() const noexcept {
+            return value;
+        }
+
+        // immutable-ref-accessor!
+        [[nodiscard]]
+        constexpr const i32 &as_count() const noexcept {
+            return value;
+        }
+
+        // mutable-ref-accessor!
+        constexpr i32 &as_mut_count() const noexcept {
+            return value;
+        }
+        
+        
     };
 
     class Seconds {
@@ -94,9 +111,23 @@ namespace tts {
             return Seconds{weeks * i32{7} * i32{24} 
                 * i32{60} * i32{60}};
         }
+   
+        // copy-accessors!
+        [[nodiscard]]
+        constexpr i32 count() const noexcept {
+            return value;
+        }
 
-        // copy-accessors.
-  
+        // immutable-ref-accessor!
+        [[nodiscard]]
+        constexpr const i32 &as_count() const noexcept {
+            return value;
+        }
+
+        // mutable-ref-accessor!
+        constexpr i32 &as_mut_count() const noexcept {
+            return value;
+        }
     };
 
     class Minutes {
@@ -140,8 +171,23 @@ namespace tts {
             return Minutes{weeks * i32{7} * i32{24} 
                 * i32{60}};
         }
+      
+        // copy-accessors!
+        [[nodiscard]]
+        constexpr i32 count() const noexcept {
+            return value;
+        }
 
-        // copy-accessors.
+        // immutable-ref-accessor!
+        [[nodiscard]]
+        constexpr const i32 &as_count() const noexcept {
+            return value;
+        }
+
+        // mutable-ref-accessor!
+        constexpr i32 &as_mut_count() const noexcept {
+            return value;
+        }
     };
 
 
@@ -186,8 +232,23 @@ namespace tts {
         static constexpr Hours from_weeks(i32 weeks) noexcept {
             return Hours{weeks * i32{7} * i32{24}};
         }
+      
+        // copy-accessors!
+        [[nodiscard]]
+        constexpr i32 count() const noexcept {
+            return value;
+        }
 
-        // copy-accessors.
+        // immutable-ref-accessor!
+        [[nodiscard]]
+        constexpr const i32 &as_count() const noexcept {
+            return value;
+        }
+
+        // mutable-ref-accessor!
+        constexpr i32 &as_mut_count() const noexcept {
+            return value;
+        }
     };
 
     class Days final {
@@ -232,8 +293,25 @@ namespace tts {
         static constexpr Days from_weeks(i32 weeks) noexcept {
             return Hours{weeks * i32{7}};
         }
+      
+        // copy-accessors!
+        [[nodiscard]]
+        constexpr i32 count() const noexcept {
+            return value;
+        }
 
-        // copy-accessors.
+        
+
+        // immutable-ref-accessor!
+        [[nodiscard]]
+        constexpr const i32 &as_count() const noexcept {
+            return value;
+        }
+
+        // mutable-ref-accessor!
+        constexpr i32 &as_mut_count() const noexcept {
+            return value;
+        }
     };
 
     class Weeks {
@@ -278,7 +356,22 @@ namespace tts {
         static constexpr Weeks from_days(i32 days) noexcept {
             return Weeks{days / i32{7}};
         }
+      
+        // copy-accessors!
+        [[nodiscard]]
+        constexpr i32 count() const noexcept {
+            return value;
+        }
 
-        // copy-accessors.
+        // immutable-ref-accessor!
+        [[nodiscard]]
+        constexpr const i32 &as_count() const noexcept {
+            return value;
+        }
+
+        // mutable-ref-accessor!
+        constexpr i32 &as_mut_count() const noexcept {
+            return value;
+        }
     };
 } //namespace tts.
