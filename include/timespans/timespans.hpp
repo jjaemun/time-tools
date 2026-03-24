@@ -23,7 +23,7 @@ namespace tts {
         explicit constexpr TimeSpan(T value_) noexcept 
             : value(value_) {}
  
-        // named-constructors!
+        // generic named-constructors!
         template <typename From, i32 N>
         [[nodiscard]]
         static constexpr TimeSpan from_raw(From from) noexcept {
@@ -34,6 +34,37 @@ namespace tts {
         [[nodiscard]]
         static constexpr TimeSpan from(TimeSpan<From, N> from) noexcept {
             return from_raw<From, N>(from.count());
+        }
+
+        // explicit named-constructors!
+        [[nodiscard]]
+        static constexpr TimeSpan from_raw_milliseconds(i64 milliseconds) noexcept {
+            return from_raw<i64, tspan::MILLISECONDS>(milliseconds);
+        }
+
+        [[nodiscard]]
+        static constexpr TimeSpan from_raw_seconds(i64 seconds) noexcept {
+            return from_raw<i64, tspan::SECONDS>(seconds);
+        }
+
+        [[nodiscard]]
+        static constexpr TimeSpan from_raw_minutes(i32 minutes) noexcept {
+            return from_raw<i64, tspan::MINUTES>(minutes);
+        }
+
+        [[nodiscard]]
+        static constexpr TimeSpan from_raw_hours(i32 hours) noexcept {
+            return from_raw<i64, tspan::HOURS>(hours);
+        }
+
+        [[nodiscard]]
+        static constexpr TimeSpan from_raw_days(i32 days) noexcept {
+            return from_raw<i64, tspan::DAYS>(days);
+        }
+
+        [[nodiscard]]
+        static constexpr TimeSpan from_raw_weeks(i32 weeks) noexcept {
+            return from_raw<i64, tspan::WEEKS>(weeks);
         }
 
         // copy-to-accessors.
