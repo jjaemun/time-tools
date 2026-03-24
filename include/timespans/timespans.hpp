@@ -24,13 +24,13 @@ namespace tts {
             : value(value_) {}
  
         // named-constructors!
-        template <typename From, const i32 N>
+        template <typename From, i32 N>
         [[nodiscard]]
         static constexpr TimeSpan from_raw(From from) noexcept {
             return TimeSpan{static_cast<T>(from) * N / LEN};
         }
 
-        template <typename From, const i32 N>
+        template <typename From, i32 N>
         [[nodiscard]]
         static constexpr TimeSpan from(TimeSpan<From, N> from) noexcept {
             return from_raw<From, N>(from.count());
@@ -42,16 +42,16 @@ namespace tts {
             return value;
         }
         
-        template <typename To, const i32 N>
+        template <typename To, i32 N>
         [[nodiscard]]
         constexpr TimeSpan<To, N> to() const noexcept {
-            return from<To, N>(static_cast<To>(value));
+            return TimeSpan<To, N>::from(*this);
         }
         
-        template <typename To, const i32 N>
+        template <typename To, i32 N>
         [[nodiscard]]
         constexpr To to_raw() const noexcept {
-            return from<To, N>(value).count();
+            return TimeSpan<To, N>::from(*this).count();
         }
 
         // immutable ref-accessor!
@@ -61,13 +61,13 @@ namespace tts {
         }
         
         // mutable ref-accessor!
-        constexpr T &as_mut_count() const noexcept {
+        constexpr T &as_mut_count() noexcept {
             return value;
         }
     
         // attr!
         [[nodiscard]]
-        constexpr const i32 len() const noexcept {
+        constexpr i32 len() const noexcept {
             return LEN;
         }
     };
