@@ -41,7 +41,6 @@ namespace tts {
         template <typename From, i32 M>
         [[nodiscard]]
         static constexpr TimeSpan from(TimeSpan<From, M> tspan) noexcept {
-
             return from_raw<From, M>(tspan.count());
         }
 
