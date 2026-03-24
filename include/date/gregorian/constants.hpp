@@ -6,7 +6,7 @@
 
 namespace tts::gregorian {
     // constants! 
-    constexpr i32 OFFSET{719468}; 
+    constexpr i32 OFFSET{719'468}; 
  
         /**
          * Proleptic gregorian epoch shift (from unix), sets origin
@@ -27,13 +27,13 @@ namespace tts::gregorian {
          * computation stability whenever there are leap years.
         */
 
-    constexpr i32 CYCLE4Y{1460};
+    constexpr i32 CYCLE4Y{1'460};
 
         /**
          * Days in a 4-year cycle excluding leap days.
         */
 
-    constexpr i32 CYCLE100Y{36524};
+    constexpr i32 CYCLE100Y{36'524};
 
         /**
          * Days in a 100-year cycle excluding the 400-year correction.
@@ -46,7 +46,7 @@ namespace tts::gregorian {
              * Years in an era.
             */
 
-        constexpr i32 DAYS{146097}; 
+        constexpr i32 DAYS{146'097}; 
 
             /**
              * Days in an era.
@@ -55,13 +55,13 @@ namespace tts::gregorian {
    } // namespace era.
 
     namespace year {
-        constexpr i32 MIN{1980};
+        constexpr i32 MIN{1'980};
             
             /**
              * Years lower bound.
             */
 
-        constexpr i32 MAX{2200};
+        constexpr i32 MAX{2'200};
             
             /**
              * Years upper bound.
