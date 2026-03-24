@@ -1,10 +1,11 @@
 #pragma once 
 
 
-#include "types.hpp"
+#include "constants.hpp"
+
 
 namespace tts {
-    template <typename T, i32 LEN>
+    template <typename T, i32 N>
     class TimeSpan final {
 
         /**
@@ -24,47 +25,84 @@ namespace tts {
             : value(value_) {}
  
         // generic named-constructors!
-        template <typename From, i32 N>
+        template <typename From, i32 M>
         [[nodiscard]]
         static constexpr TimeSpan from_raw(From from) noexcept {
-            return TimeSpan{static_cast<T>(from) * N / LEN};
+            return TimeSpan{static_cast<T>(from) * M / LEN()};
         }
 
-        template <typename From, i32 N>
+        template <typename From, i32 M>
         [[nodiscard]]
-        static constexpr TimeSpan from(TimeSpan<From, N> from) noexcept {
-            return from_raw<From, N>(from.count());
+        static constexpr TimeSpan from(TimeSpan<From, N> tspan) noexcept {
+            return from_raw<From, M>(tspan.count());
         }
 
         // explicit named-constructors!
         [[nodiscard]]
-        static constexpr TimeSpan from_raw_milliseconds(i64 milliseconds) noexcept {
-            return from_raw<i64, tspan::MILLISECONDS>(milliseconds);
+        static constexpr TimeSpan 
+        from_raw_milliseconds(i64 milliseconds) noexcept {
+            return from_raw<i64, timespan::MILLISECONDS>(milliseconds);
         }
 
         [[nodiscard]]
         static constexpr TimeSpan from_raw_seconds(i64 seconds) noexcept {
-            return from_raw<i64, tspan::SECONDS>(seconds);
+            return from_raw<i64, timespan::SECONDS>(seconds);
         }
 
         [[nodiscard]]
         static constexpr TimeSpan from_raw_minutes(i32 minutes) noexcept {
-            return from_raw<i64, tspan::MINUTES>(minutes);
+            return from_raw<i32, timespan::MINUTES>(minutes);
         }
 
         [[nodiscard]]
         static constexpr TimeSpan from_raw_hours(i32 hours) noexcept {
-            return from_raw<i64, tspan::HOURS>(hours);
+            return from_raw<i32, timespan::HOURS>(hours);
         }
 
         [[nodiscard]]
         static constexpr TimeSpan from_raw_days(i32 days) noexcept {
-            return from_raw<i64, tspan::DAYS>(days);
+            return from_raw<i32, timespan::DAYS>(days);
         }
 
         [[nodiscard]]
         static constexpr TimeSpan from_raw_weeks(i32 weeks) noexcept {
-            return from_raw<i64, tspan::WEEKS>(weeks);
+            return from_raw<i32, timespan::WEEKS>(weeks);
+        }
+        
+        [[nodiscard]]
+        static constexpr TimeSpan 
+        from_milliseconds(TimeSpan<i64, timespan::MILLISECONDS> milliseconds) noexcept {
+            return from_raw_milliseconds(milliseconds.count());
+        }
+
+        [[nodiscard]]
+        static constexpr TimeSpan 
+        from_seconds(TimeSpan<i64, timespan::SECONDS> seconds) noexcept {
+            return from_raw_seconds(seconds.count());
+        }
+
+        [[nodiscard]]
+        static constexpr TimeSpan 
+        from_minutes(TimeSpan<i32, timespan::MINUTES> minutes) noexcept {
+            return from_raw_minutes(minutes.count());
+        }
+
+        [[nodiscard]]
+        static constexpr TimeSpan 
+        from_hours(TimeSpan<i32, timespan::HOURS> hours) noexcept {
+            return from_raw_hours(hours.count());
+        }
+
+        [[nodiscard]]
+        static constexpr TimeSpan 
+        from_days(TimeSpan<i32, timespan::DAYS> days) noexcept {
+            return from_raw_days(days.count());
+        }
+
+        [[nodiscard]]
+        static constexpr TimeSpan 
+        from_weeks(TimeSpan<i32, timespan::WEEKS> weeks) noexcept {
+            return from_raw_weeks(weeks.count());
         }
 
         // copy-to-accessors.
