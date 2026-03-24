@@ -34,7 +34,7 @@ namespace tts {
              * conversions.
             */
 
-            return TimeSpan{static_cast<T>( static_cast<i64>(from) 
+            return TimeSpan{static_cast<T>(static_cast<i64>(from) 
                 * M / LEN())};
         }
 
@@ -112,13 +112,13 @@ namespace tts {
             return from_raw_weeks(weeks.count());
         }
 
-        // copy-to-accessors.
+        // copy-to-accessors!
         [[nodiscard]]
         constexpr T count() const noexcept {
             return value;
         }
        
-        // generic copy-to-conversions!
+        // generic copy-to-accessors!
         template <typename To, i32 M>
         [[nodiscard]]
         constexpr TimeSpan<To, M> to() const noexcept {
@@ -131,8 +131,66 @@ namespace tts {
             return TimeSpan<To, M>::from(*this).count();
         }
 
-        // explicit copy-to-conversions!
-        // ...
+        // explicit copy-to-accessors!
+        [[nodiscard]]
+        constexpr i64 to_raw_milliseconds() const noexcept {
+            return to_raw<TimeSpan<i64, timespan::MILLISECONDS>>();
+        }
+
+        [[nodiscard]]
+        constexpr i64 to_raw_seconds() const noexcept {
+            return to_raw<TimeSpan<i64, timespan::SECONDS>>();
+        }
+
+        [[nodiscard]]
+        constexpr i32 to_raw_minutes() const noexcept {
+            return to_raw<TimeSpan<i32, timespan::MINUTES>>();
+        }
+
+        [[nodiscard]]
+        constexpr i32 to_raw_hours() const noexcept {
+            return to_raw<TimeSpan<i32, timespan::HOURS>>());
+        }
+
+        [[nodiscard]]
+        constexpr i32 to_raw_days() const noexcept {
+            return to_raw<TimeSpan<i32, timespan::DAYS>>();
+        }
+
+        [[nodiscard]]
+        constexpr i32 to_raw_weeks() const noexcept {
+            return to_raw<TimeSpan<i32, timespan::WEEKS>>();
+        }
+        
+        [[nodiscard]]
+        constexpr TimeSpan<i64, timespan::MILLISECONDS> to_milliseconds() const noexcept {
+            return to<TimeSpan<i64, timespan::MILLISECONDS>>();
+        }
+
+        [[nodiscard]]
+        constexpr TimeSpan<i64, timespan::Seconds> to_seconds() const noexcept {
+            return to<TimeSpan<i64, timespan::SECONDS>>();
+        }
+
+        [[nodiscard]]
+        constexpr TimeSpan<i32, timespan::MINUTES> to_minutes() const noexcept {
+            return to<TimeSpan<i32, timespan::MINUTES>>();
+        }
+
+        [[nodiscard]]
+        constexpr TimeSpan<i32, timespan::HOURS> to_hours() const noexcept {
+            return to<TimeSpan<i32, timespan::HOURS>>();
+        }
+
+        [[nodiscard]]
+        constexpr TimeSpan<i32, timespan::DAYS> to_days() const noexcept {
+            return to<TimeSpan<i32, timespan::DAYS>>();
+        }
+
+        [[nodiscard]]
+        static constexpr TimeSpan<i32, timespan::WEEKS> to_weeks() noexcept {
+            return to<TimeSpan<i32, timespan::WEEKS>>();
+        }
 
         // immutable ref-accessor!
         [[nodiscard]]
