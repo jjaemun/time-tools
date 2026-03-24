@@ -28,12 +28,20 @@ namespace tts {
         template <typename From, i32 M>
         [[nodiscard]]
         static constexpr TimeSpan from_raw(From from) noexcept {
-            return TimeSpan{static_cast<T>(from) * M / LEN()};
+        
+            /**
+             * Beware **unsafe** overflow potential on careless 
+             * conversions.
+            */
+
+            return TimeSpan{static_cast<T>( static_cast<i64>(from) 
+                * M / LEN())};
         }
 
         template <typename From, i32 M>
         [[nodiscard]]
-        static constexpr TimeSpan from(TimeSpan<From, N> tspan) noexcept {
+        static constexpr TimeSpan from(TimeSpan<From, M> tspan) noexcept {
+
             return from_raw<From, M>(tspan.count());
         }
 
@@ -110,18 +118,22 @@ namespace tts {
         constexpr T count() const noexcept {
             return value;
         }
-        
-        template <typename To, i32 N>
+       
+        // generic copy-to-conversions!
+        template <typename To, i32 M>
         [[nodiscard]]
-        constexpr TimeSpan<To, N> to() const noexcept {
-            return TimeSpan<To, N>::from(*this);
+        constexpr TimeSpan<To, M> to() const noexcept {
+            return TimeSpan<To, M>::from(*this);
         }
         
-        template <typename To, i32 N>
+        template <typename To, i32 M>
         [[nodiscard]]
         constexpr To to_raw() const noexcept {
-            return TimeSpan<To, N>::from(*this).count();
+            return TimeSpan<To, M>::from(*this).count();
         }
+
+        // explicit copy-to-conversions!
+        // ...
 
         // immutable ref-accessor!
         [[nodiscard]]
@@ -136,8 +148,13 @@ namespace tts {
     
         // attr!
         [[nodiscard]]
-        constexpr i32 len() const noexcept {
-            return LEN;
+        constexpr i32 LEN() const noexcept {
+
+            /**
+             * Returns timespan units expressed in milliseconds.
+            */
+
+            return N;
         }
     };
 } // namespace tts.
