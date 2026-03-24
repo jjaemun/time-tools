@@ -36,7 +36,7 @@ namespace tts::timespan {
          * Number of miliseconds in a day.
         */   
  
-    constexpr i32 WEEKS{24 * 60 * 60 * 1'000};
+    constexpr i32 WEEKS{7 * 24 * 60 * 60 * 1'000};
         
         /**
          * Number of miliseconds in a week.
