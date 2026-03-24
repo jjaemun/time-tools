@@ -4,7 +4,7 @@
 #include "types.hpp"
 
 namespace tts {
-    template <typename T, const i32 LEN>
+    template <typename T, i32 LEN>
     class TimeSpan final {
 
         /**
