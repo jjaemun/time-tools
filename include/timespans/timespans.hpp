@@ -163,32 +163,38 @@ namespace tts {
         }
         
         [[nodiscard]]
-        constexpr TimeSpan<i64, timespan::MILLISECONDS> to_milliseconds() const noexcept {
+        constexpr TimeSpan<i64, timespan::MILLISECONDS> 
+        to_milliseconds() const noexcept {
             return to<TimeSpan<i64, timespan::MILLISECONDS>>();
         }
 
         [[nodiscard]]
-        constexpr TimeSpan<i64, timespan::Seconds> to_seconds() const noexcept {
+        constexpr TimeSpan<i64, timespan::Seconds> 
+        to_seconds() const noexcept {
             return to<TimeSpan<i64, timespan::SECONDS>>();
         }
 
         [[nodiscard]]
-        constexpr TimeSpan<i32, timespan::MINUTES> to_minutes() const noexcept {
+        constexpr TimeSpan<i32, timespan::MINUTES> 
+        to_minutes() const noexcept {
             return to<TimeSpan<i32, timespan::MINUTES>>();
         }
 
         [[nodiscard]]
-        constexpr TimeSpan<i32, timespan::HOURS> to_hours() const noexcept {
+        constexpr TimeSpan<i32, timespan::HOURS> 
+        to_hours() const noexcept {
             return to<TimeSpan<i32, timespan::HOURS>>();
         }
 
         [[nodiscard]]
-        constexpr TimeSpan<i32, timespan::DAYS> to_days() const noexcept {
+        constexpr TimeSpan<i32, timespan::DAYS> 
+        to_days() const noexcept {
             return to<TimeSpan<i32, timespan::DAYS>>();
         }
 
         [[nodiscard]]
-        static constexpr TimeSpan<i32, timespan::WEEKS> to_weeks() noexcept {
+        static constexpr TimeSpan<i32, timespan::WEEKS> 
+        to_weeks() noexcept {
             return to<TimeSpan<i32, timespan::WEEKS>>();
         }
 
