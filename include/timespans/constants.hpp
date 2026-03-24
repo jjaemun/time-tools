@@ -41,4 +41,5 @@ namespace tts::timespan {
         /**
          * Number of miliseconds in a week.
         */   
+
 } // namespace tts::timespan.
