@@ -10,13 +10,11 @@
 
 
 namespace tts {
-
-    // types.
+    // epochs!
     enum class epoch {
         unix,
         excel,
         murex,
         julian
     };
-
 } // namespace tts.
