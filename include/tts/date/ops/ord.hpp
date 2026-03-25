@@ -1,8 +1,8 @@
 #pragma once
 
 
-#include "date/date.hpp"
-#include "cmp.hpp"
+#include "tts/date/date.hpp"
+#include "tts/cmp.hpp"
 
 
 namespace tts {
