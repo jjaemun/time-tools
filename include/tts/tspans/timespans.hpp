@@ -211,7 +211,7 @@ namespace tts {
     
         // attr!
         [[nodiscard]]
-        static constexpr i32 LEN() const noexcept {
+        static constexpr i32 LEN() noexcept {
 
             /**
              * Returns timespan units expressed in milliseconds.
