@@ -46,12 +46,6 @@ namespace tts {
 
         // explicit named-constructors!
         [[nodiscard]]
-        static constexpr TimeSpan 
-        from_raw_milliseconds(i64 milliseconds) noexcept {
-            return from_raw<i64, timespan::MILLISECONDS>(milliseconds);
-        }
-
-        [[nodiscard]]
         static constexpr TimeSpan from_raw_seconds(i64 seconds) noexcept {
             return from_raw<i64, timespan::SECONDS>(seconds);
         }
@@ -74,12 +68,6 @@ namespace tts {
         [[nodiscard]]
         static constexpr TimeSpan from_raw_weeks(i32 weeks) noexcept {
             return from_raw<i32, timespan::WEEKS>(weeks);
-        }
-        
-        [[nodiscard]]
-        static constexpr TimeSpan 
-        from_milliseconds(TimeSpan<i64, timespan::MILLISECONDS> milliseconds) noexcept {
-            return from_raw_milliseconds(milliseconds.count());
         }
 
         [[nodiscard]]
@@ -133,11 +121,6 @@ namespace tts {
         
         // explicit copy-to-accessors!
         [[nodiscard]]
-        constexpr i64 to_raw_milliseconds() const noexcept {
-            return to_raw<i64, timespan::MILLISECONDS>();
-        }
-
-        [[nodiscard]]
         constexpr i64 to_raw_seconds() const noexcept {
             return to_raw<i64, timespan::SECONDS>();
         }
@@ -160,12 +143,6 @@ namespace tts {
         [[nodiscard]]
         constexpr i32 to_raw_weeks() const noexcept {
             return to_raw<i32, timespan::WEEKS>();
-        }
-        
-        [[nodiscard]]
-        constexpr TimeSpan<i64, timespan::MILLISECONDS> 
-        to_milliseconds() const noexcept {
-            return to<i64, timespan::MILLISECONDS>();
         }
 
         [[nodiscard]]
@@ -214,7 +191,7 @@ namespace tts {
         static constexpr i32 LEN() noexcept {
 
             /**
-             * Returns timespan units expressed in milliseconds.
+             * Returns timespan units expressed in seconds.
             */
 
             return N;
@@ -222,12 +199,6 @@ namespace tts {
     };
 
     // aliases!
-    using MilliSeconds = TimeSpan<i64, timespan::MILLISECONDS>;
-        
-        /**
-         * Public api for linear timespan denoting milliseconds.
-        */
-
     using Seconds = TimeSpan<i64, timespan::SECONDS>;
         
         /**
