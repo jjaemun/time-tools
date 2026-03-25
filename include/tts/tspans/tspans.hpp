@@ -27,8 +27,8 @@ namespace tts {
         // generic named-constructors!
         
             /**
-             * The expectation from TimeSpan is to truncate whenever 
-             * promoting smaller timespans to larger ones. 
+             * The expectation from TimeSpan is to truncate whenever promoting 
+             * smaller timespans to larger ones, due to integer division.
             */
     
         template <typename From, i32 M>
