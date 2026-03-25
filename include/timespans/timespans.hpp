@@ -149,7 +149,7 @@ namespace tts {
 
         [[nodiscard]]
         constexpr i32 to_raw_hours() const noexcept {
-            return to_raw<i32, timespan::HOURS>());
+            return to_raw<i32, timespan::HOURS>();
         }
 
         [[nodiscard]]
@@ -169,7 +169,7 @@ namespace tts {
         }
 
         [[nodiscard]]
-        constexpr TimeSpan<i64, timespan::Seconds> 
+        constexpr TimeSpan<i64, timespan::SECONDS> 
         to_seconds() const noexcept {
             return to<i64, timespan::SECONDS>();
         }
@@ -193,7 +193,7 @@ namespace tts {
         }
 
         [[nodiscard]]
-        static constexpr TimeSpan<i32, timespan::WEEKS> 
+        constexpr TimeSpan<i32, timespan::WEEKS> 
         to_weeks() noexcept {
             return to<i32, timespan::WEEKS>();
         }
@@ -211,7 +211,7 @@ namespace tts {
     
         // attr!
         [[nodiscard]]
-        constexpr i32 LEN() const noexcept {
+        static constexpr i32 LEN() const noexcept {
 
             /**
              * Returns timespan units expressed in milliseconds.
