@@ -25,13 +25,19 @@ namespace tts {
             : value(value_) {}
  
         // generic named-constructors!
+        
+            /**
+             * The expectation from TimeSpan is to truncate whenever 
+             * promoting smaller timespans to larger ones. 
+            */
+    
         template <typename From, i32 M>
         [[nodiscard]]
         static constexpr TimeSpan from_raw(From from) noexcept {
         
             /**
-             * Beware **unsafe** overflow potential on careless 
-             * conversions.
+             * Beware **unsafe** overflow possible on careless 
+             * conversions. 
             */
 
             return TimeSpan{static_cast<T>(static_cast<i64>(from) 
@@ -41,6 +47,12 @@ namespace tts {
         template <typename From, i32 M>
         [[nodiscard]]
         static constexpr TimeSpan from(TimeSpan<From, M> tspan) noexcept {
+         
+            /**
+             * Beware **unsafe** overflow possible on careless 
+             * conversions. 
+            */           
+            
             return from_raw<From, M>(tspan.count());
         }
 
@@ -116,6 +128,12 @@ namespace tts {
         }
        
         // generic copy-to-accessors!
+            
+            /**
+             * Truncation behaviour is inherited from named constructors 
+             * since it uses the same machinery.
+            */
+
         template <typename To, i32 M>
         [[nodiscard]]
         constexpr To to_raw() const noexcept {
