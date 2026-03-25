@@ -10,7 +10,7 @@ namespace tts {
 
         /**
          * Generalised linear timespan abstraction, parametrised on 
-         * milliseconds. Propagates to all scales.
+         * seconds. Propagates to all scales.
         */
 
     private:
