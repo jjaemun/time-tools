@@ -1,9 +1,9 @@
 #pragma once
 
 
-#include "cmp.hpp"
-#include "constants.hpp"
-#include "types.hpp"
+#include "tts/cmp.hpp"
+#include "tts/date/constants.hpp"
+#include "tts/types.hpp"
 
 
 namespace tts {
