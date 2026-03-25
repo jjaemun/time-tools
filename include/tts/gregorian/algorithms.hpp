@@ -1,8 +1,8 @@
 #pragma once
 
 
-#include "cmp.hpp"
-#include "types.hpp"
+#include "tts/cmp.hpp"
+#include "tts/types.hpp"
 
 
 namespace tts::gregorian {

@@ -2,7 +2,7 @@
 
 
 #include <stdexcept>
-#include "errors.hpp"
+#include "tts/gregorian/errors.hpp"
 
 
 namespace tts {

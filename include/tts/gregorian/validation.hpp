@@ -1,9 +1,9 @@
 #pragma once
 
 
-#include "algorithms.hpp"
-#include "cmp.hpp"
-#include "constants.hpp"
+#include "tts/cmp.hpp"
+#include "tts/gregorian/algorithms.hpp"
+#include "tts/gregorian/constants.hpp"
 
 
 namespace tts::gregorian {

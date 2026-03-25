@@ -1,12 +1,12 @@
 #pragma once
 
 
-#include "algorithms.hpp"
-#include "constants.hpp"
-#include "exceptions.hpp"
-#include "validation.hpp"
-#include "types.hpp"
-#include "cmp.hpp"
+#include "tts/cmp.hpp"
+#include "tts/gregorian/algorithms.hpp"
+#include "tts/gregorian/constants.hpp"
+#include "tts/gregorian/exceptions.hpp"
+#include "tts/gregorian/validation.hpp"
+#include "tts/types.hpp"
 
 
 namespace tts {
