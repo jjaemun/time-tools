@@ -121,16 +121,16 @@ namespace tts {
         // generic copy-to-accessors!
         template <typename To, i32 M>
         [[nodiscard]]
+        constexpr To to_raw() const noexcept {
+            return TimeSpan<To, M>::from(*this).count();
+        }
+    
+        template <typename To, i32 M>
+        [[nodiscard]]
         constexpr TimeSpan<To, M> to() const noexcept {
             return TimeSpan<To, M>::from(*this);
         }
         
-        template <typename To, i32 M>
-        [[nodiscard]]
-        constexpr To to_raw() const noexcept {
-            return TimeSpan<To, M>::from(*this).count();
-        }
-
         // explicit copy-to-accessors!
         [[nodiscard]]
         constexpr i64 to_raw_milliseconds() const noexcept {
@@ -219,43 +219,43 @@ namespace tts {
 
             return N;
         }
+    };
 
     // aliases!
     using MilliSeconds = TimeSpan<i64, timespan::MILLISECONDS>;
         
         /**
-         * Public api for timespan denoting milliseconds.
+         * Public api for linear timespan denoting milliseconds.
         */
 
     using Seconds = TimeSpan<i64, timespan::SECONDS>;
         
         /**
-         * Public api for timespan denoting seconds.
+         * Public api for linear timespan denoting seconds.
         */
     
     using Minutes = TimeSpan<i32, timespan::MINUTES>;
         
         /**
-         * Public api for timespan denoting minutes.
+         * Public api for linear timespan denoting minutes.
         */
     
     using Hours = TimeSpan<i32, timespan::HOURS>;
         
         /**
-         * Public api for timespan denoting hours.
+         * Public api for linear timespan denoting hours.
         */
     
     using Days = TimeSpan<i32, timespan::DAYS>;
         
         /**
-         * Public api for timespan denoting days.
+         * Public api for linear timespan denoting days.
         */ 
     
     using Weeks = TimeSpan<i32, timespan::WEEKS>;
         
         /**
-         * Public api for timespan denoting weeks.
+         * Public api for linear timespan denoting weeks.
         */ 
 
-    };
 } // namespace tts.
