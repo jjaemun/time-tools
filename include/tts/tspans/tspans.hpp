@@ -45,6 +45,11 @@ namespace tts {
         }
 
         // explicit named-constructors!
+            
+            /**
+             * Weak types for raw data interop.
+            */
+
         [[nodiscard]]
         static constexpr TimeSpan from_raw_seconds(i64 seconds) noexcept {
             return from_raw<i64, timespan::SECONDS>(seconds);
@@ -69,6 +74,10 @@ namespace tts {
         static constexpr TimeSpan from_raw_weeks(i32 weeks) noexcept {
             return from_raw<i32, timespan::WEEKS>(weeks);
         }
+            
+            /**
+             * Strong types.
+            */
 
         [[nodiscard]]
         static constexpr TimeSpan 
@@ -120,6 +129,11 @@ namespace tts {
         }
         
         // explicit copy-to-accessors!
+    
+            /**
+             * Weak types for raw data interop.
+            */
+
         [[nodiscard]]
         constexpr i64 to_raw_seconds() const noexcept {
             return to_raw<i64, timespan::SECONDS>();
@@ -145,33 +159,32 @@ namespace tts {
             return to_raw<i32, timespan::WEEKS>();
         }
 
+            /**
+             * Strong types.
+            */
+
         [[nodiscard]]
-        constexpr TimeSpan<i64, timespan::SECONDS> 
-        to_seconds() const noexcept {
+        constexpr TimeSpan<i64, timespan::SECONDS> to_seconds() const noexcept {
             return to<i64, timespan::SECONDS>();
         }
 
         [[nodiscard]]
-        constexpr TimeSpan<i32, timespan::MINUTES> 
-        to_minutes() const noexcept {
+        constexpr TimeSpan<i32, timespan::MINUTES> to_minutes() const noexcept {
             return to<i32, timespan::MINUTES>();
         }
 
         [[nodiscard]]
-        constexpr TimeSpan<i32, timespan::HOURS> 
-        to_hours() const noexcept {
+        constexpr TimeSpan<i32, timespan::HOURS> to_hours() const noexcept {
             return to<i32, timespan::HOURS>();
         }
 
         [[nodiscard]]
-        constexpr TimeSpan<i32, timespan::DAYS> 
-        to_days() const noexcept {
+        constexpr TimeSpan<i32, timespan::DAYS> to_days() const noexcept {
             return to<i32, timespan::DAYS>();
         }
 
         [[nodiscard]]
-        constexpr TimeSpan<i32, timespan::WEEKS> 
-        to_weeks() const noexcept {
+        constexpr TimeSpan<i32, timespan::WEEKS> to_weeks() const noexcept {
             return to<i32, timespan::WEEKS>();
         }
 
