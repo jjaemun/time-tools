@@ -93,6 +93,7 @@ namespace tts {
 
         [[nodiscard]]
         static constexpr TimeSpan 
+    :
         from_seconds(TimeSpan<i64, timespan::SECONDS> seconds) noexcept {
             return from_raw_seconds(seconds.count());
         }
