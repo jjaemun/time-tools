@@ -31,7 +31,7 @@ namespace tts {
         if (!cmplt(date.to_unix_serial(), unix::date::MAX))
             throw DateError(err::date::overflow);
 
-        auto deepcopy = date;
+        const auto deepcopy = date;
         ++date.as_mut_unix_serial();
 
         return deepcopy;
@@ -42,7 +42,7 @@ namespace tts {
         if (!cmpgt(date.to_unix_serial(), unix::date::MIN))
             throw DateError(err::date::underflow);
 
-        auto deepcopy = date;
+        const auto deepcopy = date;
         --date.as_mut_unix_serial();
 
         return deepcopy;
