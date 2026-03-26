@@ -9,8 +9,8 @@ namespace tts {
     class TimeSpan final {
 
         /**
-         * Generalised linear timespan abstraction, parametrised on 
-         * seconds. Propagates to all scales.
+         * General linear timespan abstraction, parametrised on seconds. 
+         * Beware **unsafe**, overflow possible on careless conversions.
         */
 
     private:
@@ -24,24 +24,18 @@ namespace tts {
         explicit constexpr TimeSpan(T value_) noexcept 
             : value(value_) {}
  
-        // generic named-constructors!
-        
-            /**
-             * The expectation from TimeSpan is to truncate whenever promoting 
-             * smaller timespans to larger ones, due to integer division.
-            */
-    
+        // generics!
         template <typename From, i32 M>
         [[nodiscard]]
         static constexpr TimeSpan from_raw(From from) noexcept {
-        
+         
             /**
-             * Beware **unsafe** overflow possible on careless 
-             * conversions. 
+             * TimeSpan logically truncates whenever promoting smaller 
+             * timespans to larger ones, through integer division.
             */
 
-            return TimeSpan{static_cast<T>(static_cast<i64>(from) 
-                * M / LEN())};
+            return TimeSpan{static_cast<T>((static_cast<i64>(from) 
+                * M) / LEN())};
         }
 
         template <typename From, i32 M>
@@ -49,17 +43,17 @@ namespace tts {
         static constexpr TimeSpan from(TimeSpan<From, M> tspan) noexcept {
          
             /**
-             * Beware **unsafe** overflow possible on careless 
-             * conversions. 
+             * Truncation behaviour inherited.
             */           
             
             return from_raw<From, M>(tspan.count());
         }
 
-        // explicit named-constructors!
+        // named-constructors!
             
             /**
-             * Weak types for raw data interop.
+             * Weak types as base implementation and raw data 
+             * interoperability.
             */
 
         [[nodiscard]]
@@ -88,7 +82,7 @@ namespace tts {
         }
             
             /**
-             * Strong types.
+             * Strong types as main api.
             */
 
         [[nodiscard]]
@@ -128,7 +122,7 @@ namespace tts {
             return value;
         }
        
-        // generic copy-to-accessors!
+        // generics!
             
             /**
              * Truncation behaviour is inherited from named constructors 
@@ -150,7 +144,8 @@ namespace tts {
         // explicit copy-to-accessors!
     
             /**
-             * Weak types for raw data interop.
+             * Weak types as base implementation and raw data 
+             * interoperability.
             */
 
         [[nodiscard]]
@@ -179,7 +174,7 @@ namespace tts {
         }
 
             /**
-             * Strong types.
+             * Strong types as main api.
             */
 
         [[nodiscard]]
