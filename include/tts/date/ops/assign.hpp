@@ -23,7 +23,7 @@ namespace tts {
     inline Date &operator-=(Date &date, TimeSpan<T, N> tspan) {
         const auto regressed = date.to_unix_serial() - tspan.to_days();
         if (!cmpgt(regressed, unix::date::MIN))
-            throw DateError(err::date::overflow);
+            throw DateError(err::date::underflow);
     
         date.as_mut_unix_serial() = regressed;
         return date;
