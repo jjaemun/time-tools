@@ -6,6 +6,7 @@
 #include "tts/date/date.hpp"
 #include "tts/date/errors.hpp"
 #include "tts/date/exceptions.hpp"
+#include "tts/date/hash.hpp"
 #include "tts/date/predicates.hpp"
 #include "tts/date/validation.hpp"
 #include "tts/date/ops/ops.hpp"
