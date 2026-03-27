@@ -47,4 +47,26 @@ namespace tts {
 
         return deepcopy;
     }
+
+    // plus!
+    [[nodiscard]]
+    constexpr Date operator+(Date date) noexcept {
+
+        /**
+         * Value semantics follow from Date being trivially copyable.
+        */
+
+        // no-op.
+        return date;
+    }
+
+    // neg!
+    constexpr Date operator-(Date date) = delete;
+    
+        /**
+         * Date negation is unsafe by definition. Every date is valid by 
+         * construction  (positive almost surely, relative to the epoch).
+         * Negatives are surely below the  minimum date, thus invalid.
+        */
+        
 } //namespace tts.
