@@ -6,6 +6,7 @@
 #include "tts/date/exceptions.hpp"
 #include "tts/date/validation.hpp"
 #include "tts/gregorian/gregorian.hpp"
+#include "tts/tspans/prelude.hpp"
 
 
 namespace tts {
@@ -211,6 +212,16 @@ namespace tts {
         [[nodiscard]]
         constexpr u16 days_in_month() const noexcept {
             return to_civil().days_in_month();
+        }
+        
+        [[nodiscard]]
+        constexpr Days days_between(Date other) const noexcept {
+            return Days{value - other.to_unix_serial()};
+        }
+
+        [[nodiscard]]
+        constexpr i32 raw_days_between(Date other) const noexcept {
+            return value - other.to_unix_serial();
         }
     };
 } // namespace tts.

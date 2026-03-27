@@ -7,27 +7,27 @@
 namespace tts {
     // safe copy-from-conversions.
     [[nodiscard]]
-    Date from_unix_serial(i32 serial) {
+    inline Date from_unix_serial(i32 serial) {
         return Date::from_unix_serial(serial);
     }
 
     [[nodiscard]]
-    Date from_excel_serial(i32 serial) {
+    inline Date from_excel_serial(i32 serial) {
         return Date::from_excel_serial(serial);
     }
 
     [[nodiscard]]
-    Date from_murex_serial(i32 serial) {
+    inline Date from_murex_serial(i32 serial) {
         return Date::from_murex_serial(serial);
     }
 
     [[nodiscard]]
-    Date from_julian_serial(i32 serial) {
+    inline Date from_julian_serial(i32 serial) {
         return Date::from_julian_serial(serial);
     }
 
     [[nodiscard]]
-    Date from_civil(CivilDate civil) {
+    inline Date from_civil(CivilDate civil) {
         return Date::from_civil(civil);
     }
  
