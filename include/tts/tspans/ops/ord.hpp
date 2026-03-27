@@ -8,9 +8,9 @@
 namespace tts {
     
         /**
-         * TimeSpan comparisons occur in the finest scale, to avoid a loss
-         * of information in casts. We retrive such information directly from
-         * the template parameter and keep it constexpr friendly.
+         * TimeSpan pairwise comparisons occur in the finest scale, to avoid 
+         * information loss. We retrive coarsness directly from the template
+         * parametersand keep instantiations constexpr friendly.
         */
 
     #if (defined(__cpp_impl_three_way_comparison) \
