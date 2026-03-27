@@ -10,7 +10,7 @@ namespace tts {
         /**
          * TimeSpan pairwise comparisons occur in the finest scale, to avoid 
          * information loss. We retrive coarsness directly from the template
-         * parametersand keep instantiations constexpr friendly.
+         * parameters and keep instantiations constexpr friendly.
         */
 
     #if (defined(__cpp_impl_three_way_comparison) \
@@ -106,7 +106,4 @@ namespace tts {
             return cmpneq(lhs.count(), rhs.to<T, N>().count());
     }
     #endif
-
-} // namespace tts.
-
 } // namespace tts.
