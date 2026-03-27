@@ -39,7 +39,7 @@ namespace tts {
     // plus!
     template <typename T, i64 N>
     [[nodiscard]]
-    constexpr TimeSpan<T, N> operator+(const TimeSpan<T, N> &tspan) noexcept {
+    constexpr TimeSpan<T, N> operator+(TimeSpan<T, N> tspan) noexcept {
          //no-op
         return tspan;
     }
@@ -47,11 +47,11 @@ namespace tts {
     // neg!
     template <typename T, i64 N>
     [[nodiscard]]
-    constexpr TimeSpan<T, N> operator-(const TimeSpan<T, N> &tspan) noexcept {
+    constexpr TimeSpan<T, N> operator-(TimeSpan<T, N> tspan) noexcept {
         
         /**
-         * Immutable timespan is passed, returns its negative 
-         * copy counterpart.
+         * Timespan is passed by value since it is trivially copyable, 
+         * returns its negative copy counterpart. Non-mutating tform.
         */
 
         return TimeSpan<T, N>{-tspan.count()};
