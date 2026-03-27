@@ -5,20 +5,20 @@
 
 namespace tts {
     // prefix!
-    template <typename T, i32 N>
+    template <typename T, i64 N>
     constexpr TimeSpan<T, N> &operator++(TimeSpan<T, N> &tspan) noexcept {
         ++tspan.as_mut_count();
         return tspan;
     }
 
-    template <typename T, i32 N>
+    template <typename T, i64 N>
     constexpr TimeSpan<T, N> &operator--(TimeSpan<T, N> &tspan) noexcept {
         --tspan.as_mut_count();
         return tspan;
     }
    
     // postfix!
-    template <typename T, i32 N>
+    template <typename T, i64 N>
     [[nodiscard]]
     constexpr TimeSpan<T, N> operator++(TimeSpan<T, N> &tspan, int) noexcept {
         const auto deepcopy = tspan;
@@ -27,7 +27,7 @@ namespace tts {
         return deepcopy;
     }
 
-    template <typename T, i32 N>
+    template <typename T, i64 N>
     [[nodiscard]]
     constexpr TimeSpan<T, N> operator--(TimeSpan<T, N> &tspan, int) noexcept {
         const auto deepcopy = tspan;
@@ -37,7 +37,7 @@ namespace tts {
     }
     
     // plus!
-    template <typename T, i32 N>
+    template <typename T, i64 N>
     [[nodiscard]]
     constexpr TimeSpan<T, N> operator+(const TimeSpan<T, N> &tspan) noexcept {
          //no-op
@@ -45,7 +45,7 @@ namespace tts {
     }
 
     // neg!
-    template <typename T, i32 N>
+    template <typename T, i64 N>
     [[nodiscard]]
     constexpr TimeSpan<T, N> operator-(const TimeSpan<T, N> &tspan) noexcept {
         

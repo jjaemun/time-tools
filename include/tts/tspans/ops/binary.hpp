@@ -13,7 +13,7 @@ namespace tts {
     */
 
     //add!     
-    template <typename T, i32 N, typename U, i32 M>
+    template <typename T, i64 N, typename U, i64 M>
     [[nodiscard]]
     constexpr auto operator+(TimeSpan<T, N> lhs, TimeSpan<U, M> rhs) noexcept {
  
@@ -29,7 +29,7 @@ namespace tts {
     }
 
     // sub!
-    template <typename T, i32 N, typename U, i32 M>
+    template <typename T, i64 N, typename U, i64 M>
     [[nodiscard]]
     constexpr auto operator-(TimeSpan<T, N> lhs, TimeSpan<U, M> rhs) noexcept {
   

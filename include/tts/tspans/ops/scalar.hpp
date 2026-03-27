@@ -6,7 +6,7 @@
 
 namespace tts {
     // mul!
-    template <typename T, i32 N, typename U>
+    template <typename T, i64 N, typename U>
     [[nodiscard]]
     constexpr TimeSpan<T, N> operator*(TimeSpan<T, N> tspan, U scalar) noexcept {
 
@@ -14,11 +14,11 @@ namespace tts {
          * TimeSpan ops ergonomics layer. Right-scalar multiplication. 
         */
 
-        const auto scaled = static_cast<T>(tspan.count() * scalar);
+        const auto scaled = tspan.count() * static_cast<T>(scalar);
         return TimeSpan<T, N>{scaled};
     }
 
-    template <typename U, typename T, i32 N>
+    template <typename U, typename T, i64 N>
     [[nodiscard]]
     constexpr TimeSpan<T, N> operator*(U scalar, TimeSpan<T, N> tspan) noexcept {
  
@@ -31,7 +31,7 @@ namespace tts {
     }
    
     // div!
-    template <typename T, i32 N, typename U>
+    template <typename T, i64 N, typename U>
     [[nodiscard]]
     constexpr TimeSpan<T, N> operator/(TimeSpan<T, N> tspan, U scalar) noexcept {
 
@@ -40,7 +40,7 @@ namespace tts {
          * makes no sense and so it is omitted here.
         */
 
-        const auto scaled = static_cast<T>(tspan.count() / scalar);
+        const auto scaled = tspan.count() / static_cast<T>(scalar);
         return TimeSpan<T, N>{scaled};
     }
 } // namespace tts.

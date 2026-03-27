@@ -23,7 +23,7 @@ namespace tts {
          */
 
     // spaceship!
-    template <typename T, i32 N, typename U, i32 M>
+    template <typename T, i64 N, typename U, i64 M>
     [[nodiscard]]
     constexpr auto operator<=>(TimeSpan<T, N> lhs, TimeSpan<U, M> rhs) noexcept {
         if constexpr (N > M)
@@ -33,7 +33,7 @@ namespace tts {
     }
 
     // (in)equality! 
-    template <typename T, i32 N, typename U, i32 M>
+    template <typename T, i64 N, typename U, i64 M>
     [[nodiscard]]
     constexpr bool operator==(TimeSpan<T, N> lhs, TimeSpan<U, M> rhs) noexcept {
         
@@ -50,7 +50,7 @@ namespace tts {
     #else
 
     // partial ord!
-    template <typename T, i32 N, typename U, i32 M>
+    template <typename T, i64 N, typename U, i64 M>
     [[nodiscard]]
     constexpr bool operator<=(TimeSpan<T, N> lhs, TimeSpan<U, M> rhs) noexcept {
 	    if constexpr (N > M)
@@ -59,7 +59,7 @@ namespace tts {
             return cmple(lhs.count(), rhs.to<T, N>().count());
     }
 
-    template <typename T, i32 N, typename U, i32 M>
+    template <typename T, i64 N, typename U, i64 M>
     [[nodiscard]]
     constexpr bool operator>=(TimeSpan<T, N> lhs, TimeSpan<U, M> rhs) noexcept {
 	    if constexpr (N > M)
@@ -69,7 +69,7 @@ namespace tts {
     }
 
     // total ord!
-    template <typename T, i32 N, typename U, i32 M>
+    template <typename T, i64 N, typename U, i64 M>
     [[nodiscard]]
     constexpr bool operator<(TimeSpan<T, N> lhs, TimeSpan<U, M> rhs) noexcept {
 	    if constexpr (N > M)
@@ -78,7 +78,7 @@ namespace tts {
             return cmplt(lhs.count(), rhs.to<T, N>().count());
     }
 
-    template <typename T, i32 N, typename U, i32 M>
+    template <typename T, i64 N, typename U, i64 M>
     [[nodiscard]]
     constexpr bool operator>(TimeSpan<T, N> lhs, TimeSpan<U, M> rhs) noexcept {
 	    if constexpr (N > M)
@@ -88,7 +88,7 @@ namespace tts {
     }
 
     // (in)equality! 
-    template <typename T, i32 N, typename U, i32 M>
+    template <typename T, i64 N, typename U, i64 M>
     [[nodiscard]]
     constexpr bool operator==(TimeSpan<T, N> lhs, TimeSpan<U, M> rhs) noexcept {
 	    if constexpr (N > M)
@@ -97,7 +97,7 @@ namespace tts {
             return cmpeq(lhs.count(), rhs.to<T, N>().count());
     }
 
-    template <typename T, i32 N, typename U, i32 M>
+    template <typename T, i64 N, typename U, i64 M>
     [[nodiscard]]
     constexpr bool operator!=(TimeSpan<T, N> lhs, TimeSpan<U, M> rhs) noexcept {
 	    if constexpr (N > M)
