@@ -2,15 +2,15 @@
 
 
 #include "tts/cmp.hpp"
-#include "tts/tspans/tpans.hpp"
+#include "tts/tspans/tspans.hpp"
 
 
 namespace tts {
     
         /**
          * TimeSpan pairwise comparisons occur in the finest scale, to avoid 
-         * information loss. We retrive coarsness directly from the template
-         * parameters and keep instantiations constexpr friendly.
+         * information loss. We retrive operand coarsness directly from the
+         * template parameters and keep instantiations constexpr friendly.
         */
 
     #if (defined(__cpp_impl_three_way_comparison) \
