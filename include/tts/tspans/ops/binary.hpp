@@ -12,8 +12,9 @@ namespace tts {
      * finer scale return types when using inline explicit conversions.
     */
 
+    //binary!     
     template <typename T, i32 N, typename U, i32 M>
-    [[noexcept]]
+    [[nodiscard]]
     constexpr auto operator+(TimeSpan<T, N> lhs, TimeSpan<U, M> rhs) noexcept {
  
         /**
@@ -28,7 +29,7 @@ namespace tts {
     }
 
     template <typename T, i32 N, typename U, i32 M>
-    [[noexcept]]
+    [[nodiscard]]
     constexpr auto operator-(TimeSpan<T, N> lhs, TimeSpan<U, M> rhs) noexcept {
   
         /**
