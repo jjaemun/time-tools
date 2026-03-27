@@ -35,4 +35,25 @@ namespace tts {
 
         return deepcopy;
     }
+    
+    // plus!
+    template <typename T, i32 N>
+    [[nodiscard]]
+    constexpr TimeSpan<T, N> operator+(const TimeSpan<T, N> &tspan) noexcept {
+         //no-op
+        return tspan;
+    }
+
+    // neg!
+    template <typename T, i32 N>
+    [[nodiscard]]
+    constexpr TimeSpan<T, N> operator-(const TimeSpan<T, N> &tspan) noexcept {
+        
+        /**
+         * Immutable timespan is passed, returns its negative 
+         * copy counterpart.
+        */
+
+        return TimeSpan<T, N>{-tspan.count()};
+    }
 } // namespace tts.  
