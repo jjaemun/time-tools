@@ -23,8 +23,8 @@ namespace tts {
     constexpr TimeSpan<T, N> operator*(U scalar, TimeSpan<T, N> tspan) noexcept {
  
         /**
-         * TimeSpan ops ergonomics layer. Left-scalar multiplication, invokes 
-         * right-scalar mul due to commutativity of the product and unify impl.
+         * Left-scalar multiplication, invokes right-scalar mul due to 
+         * commutativity of the product and to unify implementation.
         */
 
        return tspan * scalar;
@@ -36,8 +36,8 @@ namespace tts {
     constexpr TimeSpan<T, N> operator/(TimeSpan<T, N> tspan, U scalar) noexcept {
 
         /**
-         * Left scalar div, even under the premise of completeness, makes no
-         * sense and so it is omitted here.
+         * Left-scalar division, even under the premise of completeness, 
+         * makes no sense and so it is omitted here.
         */
 
         const auto scaled = static_cast<T>(tspan.count() / scalar);
