@@ -24,7 +24,7 @@ namespace tts {
     template <typename T, i64 N>
     [[nodiscard]]
     inline Date operator+(Date date, TimeSpan<T, N> tspan) {
-        const auto advanced = date.to_unix_serial() + tspan.to_days();
+        const auto advanced = date.to_unix_serial() + tspan.to_raw_days();
         if (!cmplt(advanced, unix::date::MAX))
             throw DateError(err::date::overflow);
     
@@ -35,7 +35,7 @@ namespace tts {
     template <typename T, i64 N>
     [[nodiscard]]
     inline Date operator-(Date date, TimeSpan<T, N> tspan) {
-        const auto regressed = date.to_unix_serial() - tspan.to_days();
+        const auto regressed = date.to_unix_serial() - tspan.to_raw_days();
         if (!cmpgt(regressed, unix::date::MIN))
             throw DateError(err::date::underflow);
     
