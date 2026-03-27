@@ -9,13 +9,14 @@ namespace tts {
     template <typename T, i32 N, typename U>
     [[nodiscard]]
     constexpr TimeSpan<T, N> operator*(TimeSpan<T, N> tspan, U scalar) noexcept {
-        return TimeSpan<T, N>{static_cast<T>(tspan.count() * scalar)};
+        const auto scaled = static_cast<T>(tspan.count() * scalar);
+        return TimeSpan<T, N>{scaled};
     }
 
     template <typename U, typename T, i32 N>
     [[nodiscard]]
     constexpr TimeSpan<T, N> operator*(U scalar, TimeSpan<T, N> tspan) noexcept {
-        return TimeSpan<T, N>{static_cast<T>(tspan.count() * scalar)};
+        return tspan * scalar;
     }
     
     template <typename T, i32 N, typename U>
@@ -27,6 +28,7 @@ namespace tts {
          * sense and so it is omitted here.
         */
 
-        return TimeSpan<T, N>{static_cast<T>(tspan.count() / scalar)};
+        const auto scaled = static_cast<T>(tspan.count() / scalar);
+        return TimeSpan<T, N>{scaled};
     }
 } // namespace tts.
