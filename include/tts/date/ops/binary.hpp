@@ -13,7 +13,7 @@ namespace tts {
         
         /**
          * Sub operator overload directly delegates to strong type variant
-         * as the main api. Add operator is unnecesary for data-date ops and
+         * as the main api. Add operator is unnecesary for date-date ops and
          * has no meaningful physical interpretation. Safe by definition.
         */
 
