@@ -5,7 +5,7 @@
 
 
 namespace tts {
-    template <typename T, i32 N>
+    template <typename T, i64 N>
     class TimeSpan final {
 
         /**
@@ -25,7 +25,7 @@ namespace tts {
             : value(value_) {}
  
         // generics!
-        template <typename From, i32 M>
+        template <typename From, i64 M>
         [[nodiscard]]
         static constexpr TimeSpan from_raw(From from) noexcept {
          
@@ -38,7 +38,7 @@ namespace tts {
                 * M) / LEN())};
         }
 
-        template <typename From, i32 M>
+        template <typename From, i64 M>
         [[nodiscard]]
         static constexpr TimeSpan from(TimeSpan<From, M> tspan) noexcept {
          
@@ -128,13 +128,13 @@ namespace tts {
              * since it uses the same machinery.
             */
 
-        template <typename To, i32 M>
+        template <typename To, i64 M>
         [[nodiscard]]
         constexpr To to_raw() const noexcept {
             return TimeSpan<To, M>::from(*this).count();
         }
     
-        template <typename To, i32 M>
+        template <typename To, i64 M>
         [[nodiscard]]
         constexpr TimeSpan<To, M> to() const noexcept {
             return TimeSpan<To, M>::from(*this);
@@ -214,7 +214,7 @@ namespace tts {
     
         // attr!
         [[nodiscard]]
-        static constexpr i32 LEN() noexcept {
+        static constexpr i64 LEN() noexcept {
 
             /**
              * Returns timespan units expressed in seconds.
