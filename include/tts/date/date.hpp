@@ -7,6 +7,7 @@
 #include "tts/date/validation.hpp"
 #include "tts/gregorian/gregorian.hpp"
 #include "tts/tspans/prelude.hpp"
+#include "tts/units.hpp"
 
 
 namespace tts {
@@ -167,19 +168,38 @@ namespace tts {
 
         // serial predicates!
         [[nodiscard]]
-        constexpr bool is_weekend() const noexcept {
-        
-            /**
-             * Because 1970-01-01 (unix epoch) was a thursday, we offset
-             * by 3 then check from 'monday'.
-            */
-
-            return (value + 3) % 7 >= 5;
+        constexpr bool is_monday() const noexcept {
+            return day_of_week() == weekday::monday;
         }
-
+        
         [[nodiscard]]
-        constexpr bool is_weekday() const noexcept {
-            return (!is_weekend());
+        constexpr bool is_tuesday() const noexcept {
+            return day_of_week() == weekday::tuesday;
+        }
+        
+        [[nodiscard]]
+        constexpr bool is_wednesday() const noexcept {
+            return day_of_week() == weekday::wednesday;
+        }
+        
+        [[nodiscard]]
+        constexpr bool is_thursday() const noexcept {
+            return day_of_week() == weekday::thursday;
+        }
+        
+        [[nodiscard]]
+        constexpr bool is_friday() const noexcept {
+            return day_of_week() == weekday::friday;
+        }
+        
+        [[nodiscard]]
+        constexpr bool is_saturday() const noexcept {
+            return day_of_week() == weekday::saturday;
+        }
+        
+        [[nodiscard]]
+        constexpr bool is_sunday() const noexcept {
+            return day_of_week() == weekday::sunday;
         }
 
         // gregorian predicates!
@@ -209,6 +229,17 @@ namespace tts {
         }
 
         // attr!
+        [[nodiscard]]
+        constexpr weekday day_of_week() const noexcept {
+        
+            /**
+             * Because 1970-01-01 (unix epoch) was a thursday, we offset
+             * by 3 then check from 'monday'.
+            */
+
+            return static_cast<weekday>((value + 3) % 7);
+        }
+    
         [[nodiscard]]
         constexpr u16 days_in_month() const noexcept {
             return to_civil().days_in_month();
