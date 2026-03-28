@@ -213,15 +213,15 @@ namespace tts {
         constexpr u16 days_in_month() const noexcept {
             return to_civil().days_in_month();
         }
-        
-        [[nodiscard]]
-        constexpr Days days_between(Date other) const noexcept {
-            return Days{value - other.to_unix_serial()};
-        }
-
+ 
         [[nodiscard]]
         constexpr i32 raw_days_between(Date other) const noexcept {
             return value - other.to_unix_serial();
+        }
+       
+        [[nodiscard]]
+        constexpr Days days_between(Date other) const noexcept {
+            return Days{raw_days_between(other)};
         }
     };
 } // namespace tts.
