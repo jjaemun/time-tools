@@ -167,6 +167,12 @@ namespace tts {
         }
 
         // serial predicates!
+        
+            /**
+             * Whether a date is weekend must consider the context, e.g,
+             * geographical, and thus must be calendar aware. Deferred.
+            */
+    
         [[nodiscard]]
         constexpr bool is_monday() const noexcept {
             return day_of_week() == weekday::monday;
