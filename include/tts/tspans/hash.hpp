@@ -7,6 +7,13 @@
 
 namespace std {
     // hash!
+    
+        /**
+         * It is not immediately clear whether a generalised hash should be favoured 
+         * over explicit specializations for the public aliases. There is a tradeoff 
+         * between lines of code, explicitness and coverage. Hazardous?
+        */
+
     template <>
     struct hash<tts::Seconds> {
         // seconds.
