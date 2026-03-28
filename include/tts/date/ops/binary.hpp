@@ -28,7 +28,7 @@ namespace tts {
         if (!cmplt(advanced, unix::date::MAX))
             throw DateError(err::date::overflow);
     
-        return Date::from_unix_serial(advanced);
+        return Date::from_unix_serial_unsafe(advanced);
     }
 
     // tspan-sub!
@@ -39,6 +39,6 @@ namespace tts {
         if (!cmpgt(regressed, unix::date::MIN))
             throw DateError(err::date::underflow);
     
-        return Date::from_unix_serial(regressed);
+        return Date::from_unix_serial_unsafe(regressed);
     }
 } // namespace tts.
