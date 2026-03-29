@@ -86,7 +86,6 @@ namespace tts {
         
         }
  
-
         [[nodiscard]]
          static Holidays from_julian_serials(std::string name, 
                                              std::vector<i32> serials) {
@@ -104,7 +103,7 @@ namespace tts {
 
         [[nodiscard]]
         static Holidays from_unix_serials_unsafe(std::string name, 
-                                                 std::vector<i32> serials) {
+                                                 std::vector<i32> serials) noexcept {
             std::vector<Date> dates;
             for (auto s : serials)
                 dates.push_back(Date::from_unix_serial_unsafe(s));
@@ -114,7 +113,7 @@ namespace tts {
 
         [[nodiscard]]
         static Holidays from_excel_serials_unsafe(std::string name, 
-                                                  std::vector<i32> serials) {
+                                                  std::vector<i32> serials) noexcept {
             std::vector<Date> dates;
             for (auto s : serials)
                 dates.push_back(Date::from_excel_serial_unsafe(s));
@@ -124,7 +123,7 @@ namespace tts {
 
         [[nodiscard]]
         static Holidays from_murex_serials_unsafe(std::string name, 
-                                                  std::vector<i32> serials) {
+                                                  std::vector<i32> serials) noexcept {
             std::vector<Date> dates;
             for (auto s : serials)
                 dates.push_back(Date::from_murex_serial_unsafe(s));
@@ -136,7 +135,7 @@ namespace tts {
 
         [[nodiscard]]
          static Holidays from_julian_serials_unsafe(std::string name, 
-                                                    std::vector<i32> serials) {
+                                                    std::vector<i32> serials) noexcept {
             std::vector<Date> dates;
             for (auto s : serials)
                 dates.push_back(Date::from_julian_serial_unsafe(s));
@@ -149,4 +148,3 @@ namespace tts {
         constexpr void join(const Holidays &other) noexcept;
     };
 } // namespace tts.
-
