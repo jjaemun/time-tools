@@ -48,7 +48,7 @@ namespace tts {
 
             std::sort(dates.begin(), dates.end());
             dates.erase(std::unique(dates.begin(), 
-                                    dates.end(), dates.end()));
+                                    dates.end()), dates.end());
 
             return Holidays{name, dates};
         }
@@ -145,23 +145,64 @@ namespace tts {
             return from_dates(name, dates);
         }
 
+        // copy-to accessors!
+        [[nodiscard]]
+        constexpr std::string get_name() const noexcept {
+            return name;
+        }
+
+        [[nodiscard]]
+        std::vector<Date> dates() const noexcept {
+            return values;
+        }
+
+        // immutable-ref-accessor!
+        [[nodiscard]]
+        const std::vector<Date> &as_dates() const noexcept {
+            return values;
+        }
+
+        // mutable-ref-accessor!
+        std::vector<Date> &as_mut_dates() noexcept {
+            return values;
+        }
+
         // n-ary merge!
         template <typename... Hols>
         void join(const Hols&... others) noexcept {
             
             /**
-             * Variadic pack of Holidays.
+             * k-way merge on variadic pack of Holidays. Mutates 
+             * internal state. Simple to keep it maintainable.
             */
+    
+            // deepcopy.         
+            auto merged = values;
+            std::vector<const Holidays*> holidays = { &others... };
+            for (auto holiday : holidays) {
 
-            std::vector<Holidays&> holidays = { others... };
-            for (auto &holiday : holidays) {
+                /**
+                 * Since Holidays guarantees sorted, we can simply
+                 * merge iteratively and erase duplicates later.
+                */
                 
-            
+                std::vector<Date> placeholder;
+
+                const auto &dates = holiday->as_dates();
+                std::merge(merged.begin(), merged.end(), dates.begin(), 
+                           dates.end(),std::back_inserter(placeholder));
+                
+                std::swap(merged, placeholder);
+            }
+
+            merged.erase(std::unique(values.begin(), 
+                                     values.end()), values.end());
+            std::swap(values, merged);
         }
 
         // look-ups!
         bool is_holiday(Date date) const noexcept {
-            return std::binary_search(values.begin(), values.end(), date);
+            return std::binary_search(merged.begin(), merged.end(), date);
         }
     };
 } // namespace tts.
