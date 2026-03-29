@@ -173,6 +173,11 @@ namespace tts {
             return values;
         }
 
+        // look-ups!
+        bool is_holiday(Date date) const noexcept {
+            return std::binary_search(values.begin(), values.end(), date);
+        }
+ 
         // n-ary merge!
         template <typename... Hols>
         void join(const Hols&... others) noexcept {
@@ -198,10 +203,5 @@ namespace tts {
                                      merged.end()), merged.end());
             std::swap(values, merged);
         }
-
-        // look-ups!
-        bool is_holiday(Date date) const noexcept {
-            return std::binary_search(values.begin(), values.end(), date);
-        }
-    };
+   };
 } // namespace tts.
