@@ -135,7 +135,6 @@ namespace tts {
         
         }
  
-
         [[nodiscard]]
          static Holidays from_julian_serials_unsafe(std::string name, 
                                                     std::vector<i32> serials) noexcept {
@@ -146,10 +145,19 @@ namespace tts {
             return from_dates(name, dates);
         }
 
-
         // n-ary merge!
         template <typename... Hols>
-        void join(const Hols&... others) noexcept;
+        void join(const Hols&... others) noexcept {
+            
+            /**
+             * Variadic pack of Holidays.
+            */
+
+            std::vector<Holidays&> holidays = { others... };
+            for (auto &holiday : holidays) {
+                
+            
+        }
 
         // look-ups!
         bool is_holiday(Date date) const noexcept {
