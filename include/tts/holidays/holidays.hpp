@@ -24,8 +24,8 @@ namespace tts {
 
         /**
          * Date lookups on std::vector are O(log(n)) which is modest. 
-         * Using a hash map or unordered map would reduce lookups to
-         * O(1) but perform worse in memory footprint and locality.
+         * Using a hash map would reduce lookups to O(1) but perform
+         * worse in memory footprint and locality.
         */
 
         std::string name;
@@ -47,6 +47,9 @@ namespace tts {
             */
 
             std::sort(dates.begin(), dates.end());
+            dates.erase(std::unique(dates.begin(), 
+                                    dates.end(), dates.end()));
+
             return Holidays{name, dates};
         }
 
@@ -144,7 +147,13 @@ namespace tts {
         }
 
 
-        // merge!
-        constexpr void join(const Holidays &other) noexcept;
+        // n-ary merge!
+        template <typename... Hols>
+        void join(const Hols&... others) noexcept;
+
+        // look-ups!
+        bool is_holiday(Date date) const noexcept {
+            return std::binary_search(values.begin(), values.end(), date);
+        }
     };
 } // namespace tts.
