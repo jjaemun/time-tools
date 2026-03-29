@@ -18,8 +18,6 @@ namespace tts::holidays {
          * Willman-Bell ch.9, Meeus J., 1998). Valid if year is valid only.
         */
    
-        // intermediates.
-        
         // metonic moon cycle (every 19 years).
         const auto metonic = year % 19;
         // current century.
@@ -64,4 +62,5 @@ namespace tts::holidays {
 
         return std::make_tuple(year, month, day);
     }
-}
+} // namespace tts::holidays.
+
