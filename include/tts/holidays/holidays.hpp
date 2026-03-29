@@ -42,8 +42,8 @@ namespace tts {
                                    std::vector<Date> dates) noexcept {
             
             /**
-             * std::sort is only constexpr from c++20 onwards, so we 
-             * do not use it here.
+             * std::sort is only constexpr from c++20 onwards, so 
+             * we do not use it here.
             */
 
             std::sort(dates.begin(), dates.end());
@@ -60,6 +60,41 @@ namespace tts {
             std::sort(dates.begin(), dates.end());
             return Holidays{name, dates};
         }
+
+        [[nodiscard]]
+        static Holidays from_excel_serials(std::string name, 
+                                            std::vector<i32> serials) {
+            std::vector<Date> dates;
+            for (auto s : serials)
+                dates.push_back(Date::from_excel_serial(s));
+        
+            std::sort(dates.begin(), dates.end());
+            return Holidays{name, dates};
+        }
+
+        [[nodiscard]]
+        static Holidays from_murex_serials(std::string name, 
+                                           std::vector<i32> serials) {
+            std::vector<Date> dates;
+            for (auto s : serials)
+                dates.push_back(Date::from_murex_serial(s));
+        
+            std::sort(dates.begin(), dates.end());
+            return Holidays{name, dates};
+        }
+ 
+
+        [[nodiscard]]
+         static Holidays from_julian_serials(std::string name, 
+                                             std::vector<i32> serials) {
+            std::vector<Date> dates;
+            for (auto s : serials)
+                dates.push_back(Date::from_julian_serial(s));
+        
+            std::sort(dates.begin(), dates.end());
+            return Holidays{name, dates};
+        }
+ 
 
         // merge!
         constexpr void join(const Holidays &other) noexcept;
