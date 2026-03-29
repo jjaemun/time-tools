@@ -40,14 +40,16 @@ namespace tts::holidays {
        // leap years correction.
         const auto leapcorr = (century + 8) / 25;
         // moon correction.
-        const auto mooncorr = (century - leapcorr + 1) / 3;
+        const auto mooncorr = (1 + century - 
+            leapcorr) / 3;
+        
         // paschal full mooon date.
         const auto epact = (19 * metonic + century - 
             centleaps - mooncorr + 15) % 30;
 
         // weekday alignment.
-        const auto alignment = (32 + 2 * centnoleaps + 2 * 
-            yearleaps - epact - yearnoleaps) % 7;
+        const auto alignment = (32 + 2 * centnoleaps + 
+            2 * yearleaps - epact - yearnoleaps) % 7;
         // easter conditioning / shifting.
         const auto condition = (metonic + 11 * epact + 
             22 * alignment) / 451;
