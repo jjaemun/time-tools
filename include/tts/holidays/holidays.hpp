@@ -164,6 +164,12 @@ namespace tts {
 
         // mutable-ref-accessor!
         std::vector<Date> &as_mut_dates() noexcept {
+        
+            /**
+             * Beware **unsafe**, invokes mutability and so maintaining
+             * a valid state (sorted, uniqueness) is necessary.
+            */
+
             return values;
         }
 
@@ -188,14 +194,14 @@ namespace tts {
                 std::swap(merged, placeholder);
             }
 
-            merged.erase(std::unique(values.begin(), 
-                                     values.end()), values.end());
+            merged.erase(std::unique(merged.begin(), 
+                                     merged.end()), merged.end());
             std::swap(values, merged);
         }
 
         // look-ups!
         bool is_holiday(Date date) const noexcept {
-            return std::binary_search(merged.begin(), merged.end(), date);
+            return std::binary_search(values.begin(), values.end(), date);
         }
     };
 } // namespace tts.
