@@ -57,8 +57,7 @@ namespace tts {
             for (auto s : serials)
                 dates.push_back(Date::from_unix_serial(s));
         
-            std::sort(dates.begin(), dates.end());
-            return Holidays{name, dates};
+            return from_dates(name, dates);
         }
 
         [[nodiscard]]
@@ -67,9 +66,8 @@ namespace tts {
             std::vector<Date> dates;
             for (auto s : serials)
                 dates.push_back(Date::from_excel_serial(s));
-        
-            std::sort(dates.begin(), dates.end());
-            return Holidays{name, dates};
+
+            return from_dates(name, dates);
         }
 
         [[nodiscard]]
@@ -79,8 +77,8 @@ namespace tts {
             for (auto s : serials)
                 dates.push_back(Date::from_murex_serial(s));
         
-            std::sort(dates.begin(), dates.end());
-            return Holidays{name, dates};
+            return from_dates(name, dates);
+        
         }
  
 
@@ -91,8 +89,7 @@ namespace tts {
             for (auto s : serials)
                 dates.push_back(Date::from_julian_serial(s));
         
-            std::sort(dates.begin(), dates.end());
-            return Holidays{name, dates};
+            return from_dates(name, dates);
         }
  
 
