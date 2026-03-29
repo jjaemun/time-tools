@@ -43,12 +43,17 @@ namespace tts {
             
             /**
              * std::sort is only constexpr from c++20 onwards, so 
-             * we do not use it here.
+             * we do not use it here. Safe by definition.
             */
 
             std::sort(dates.begin(), dates.end());
             return Holidays{name, dates};
         }
+
+            /**
+             * From serials, we check in the safe variants, so that
+             * Dates are safe by construction.
+            */
 
         [[nodiscard]]
         static Holidays from_unix_serials(std::string name, 
@@ -91,7 +96,54 @@ namespace tts {
         
             return from_dates(name, dates);
         }
+
+            /**
+             * Unsafe (faster) variants for ingestion workflows from 
+             * safe data pipelines.
+            */
+
+        [[nodiscard]]
+        static Holidays from_unix_serials_unsafe(std::string name, 
+                                                 std::vector<i32> serials) {
+            std::vector<Date> dates;
+            for (auto s : serials)
+                dates.push_back(Date::from_unix_serial_unsafe(s));
+        
+            return from_dates(name, dates);
+        }
+
+        [[nodiscard]]
+        static Holidays from_excel_serials_unsafe(std::string name, 
+                                                  std::vector<i32> serials) {
+            std::vector<Date> dates;
+            for (auto s : serials)
+                dates.push_back(Date::from_excel_serial_unsafe(s));
+
+            return from_dates(name, dates);
+        }
+
+        [[nodiscard]]
+        static Holidays from_murex_serials_unsafe(std::string name, 
+                                                  std::vector<i32> serials) {
+            std::vector<Date> dates;
+            for (auto s : serials)
+                dates.push_back(Date::from_murex_serial_unsafe(s));
+        
+            return from_dates(name, dates);
+        
+        }
  
+
+        [[nodiscard]]
+         static Holidays from_julian_serials_unsafe(std::string name, 
+                                                    std::vector<i32> serials) {
+            std::vector<Date> dates;
+            for (auto s : serials)
+                dates.push_back(Date::from_julian_serial_unsafe(s));
+        
+            return from_dates(name, dates);
+        }
+
 
         // merge!
         constexpr void join(const Holidays &other) noexcept;
