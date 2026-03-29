@@ -180,18 +180,11 @@ namespace tts {
             auto merged = values;
             std::vector<const Holidays*> holidays = { &others... };
             for (auto holiday : holidays) {
-
-                /**
-                 * Since Holidays guarantees sorted, we can simply
-                 * merge iteratively and erase duplicates later.
-                */
-                
                 std::vector<Date> placeholder;
 
                 const auto &dates = holiday->as_dates();
                 std::merge(merged.begin(), merged.end(), dates.begin(), 
                            dates.end(),std::back_inserter(placeholder));
-                
                 std::swap(merged, placeholder);
             }
 
