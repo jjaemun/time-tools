@@ -11,7 +11,7 @@
 namespace tts::holidays {
     // algorithms!
     [[nodiscard]]
-    constexpr std::tuple<i32, u16, u16> ymd_easter_from_year(i32 year) noexcept {
+    constexpr std::tuple<i32, u16, u16> easter_from_year(i32 year) noexcept {
         
         /**
          * Computes easter sunday for a given year (Astronomical Algorihtms, 
