@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
-#include<type_traits>
+#include <type_traits>
 #include <utility>
 
 
@@ -180,15 +180,15 @@ namespace tts {
         }
  
         // n-ary merge!
-        template <typename... Hols>
-        void join(const Hols&... others) noexcept {
+        template <typename... Others>
+        void join(const Others&... others) noexcept {
             
             /**
              * k-way merge on variadic pack of Holidays. Mutates 
              * internal state. Simple to keep it maintainable.
             */
 
-            static_assert((std::is_same_v<std::remove_cvref_t<Hols>, 
+            static_assert((std::is_same_v<std::remove_cvref_t<Others>, 
                 Holidays> && ...));
     
             // deepcopy.         
