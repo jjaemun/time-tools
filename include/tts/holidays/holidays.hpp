@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include<type_traits>
 #include <utility>
 
 
@@ -186,6 +187,9 @@ namespace tts {
              * k-way merge on variadic pack of Holidays. Mutates 
              * internal state. Simple to keep it maintainable.
             */
+
+            static_assert((std::is_same_v<std::remove_cvref_t<Hols>, 
+                Holidays> && ...));
     
             // deepcopy.         
             auto merged = values;
