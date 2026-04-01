@@ -152,17 +152,17 @@ namespace tts {
 
         // gregorian decompositions!
         [[nodiscard]]
-        constexpr i32 year() const noexcept {
+        constexpr i32 get_year() const noexcept {
             return to_civil().get_year();
         }
 
         [[nodiscard]]
-        constexpr u16 month() const noexcept {
+        constexpr u16 get_month() const noexcept {
             return to_civil().get_month();
         }
 
         [[nodiscard]]
-        constexpr u16 day() const noexcept {
+        constexpr u16 get_day() const noexcept {
             return to_civil().get_day();
         }
 
