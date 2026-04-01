@@ -8,9 +8,8 @@
 #include <utility>
 
 
-#include "tts/date/prelude.hpp"
-#include "tts/holidays/algorithms.hpp"
 #include "tts/types.hpp"
+#include "tts/date/prelude.hpp"
 
 
 namespace tts {
@@ -153,7 +152,7 @@ namespace tts {
         }
 
         [[nodiscard]]
-        std::vector<Date> dates() const noexcept {
+        std::vector<Date> to_dates() const noexcept {
             return values;
         }
 
