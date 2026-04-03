@@ -25,7 +25,7 @@ namespace tts {
     constexpr void assert_le(T a, T b) noexcept {
         assert(a <= b);
     }
-    
+
     template <typename T>
     constexpr void assert_gt(T a, T b) noexcept {
         assert(a > b);
