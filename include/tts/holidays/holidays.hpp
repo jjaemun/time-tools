@@ -8,7 +8,10 @@
 #include <utility>
 
 
+#include "tts/cmp.hpp"
 #include "tts/types.hpp"
+#include "tts/holidays/errors.hpp"
+#include "tts/holidays/exceptions.hpp"
 #include "tts/date/prelude.hpp"
 
 
@@ -145,18 +148,19 @@ namespace tts {
             return from_dates(name, dates);
         }
 
-        // copy-to accessors!
-        [[nodiscard]]
-        constexpr std::string get_name() const noexcept {
-            return name;
-        }
-
+        // copy-to accessor!
         [[nodiscard]]
         std::vector<Date> to_dates() const noexcept {
             return values;
         }
 
         // immutable-ref-accessor!
+        [[nodiscard]]
+        const std::string &get_name() const noexcept {
+            return name;
+        }
+
+    
         [[nodiscard]]
         const std::vector<Date> &as_dates() const noexcept {
             return values;
@@ -174,7 +178,28 @@ namespace tts {
         }
 
         // look-ups!
+        [[nodiscard]]
         bool is_holiday(Date date) const noexcept {
+
+            /**
+             * Assumes all holidays are known. 
+            */
+
+            return std::binary_search(values.begin(), values.end(), date);
+        }
+ 
+        [[nodiscard]]
+        bool is_holiday_bounded(Date date) const {
+
+            /**
+             * Assumes that not all holidays are know; year bounding is 
+             * enough to check whether we have a meaningful comparison.
+            */
+
+            if (cmplt(date.get_year(), start_year())
+                    || cmpgt(date.get_year(), end_year()))
+                throw HolidaysError(err::holidays::invalid);
+
             return std::binary_search(values.begin(), values.end(), date);
         }
  
@@ -205,6 +230,23 @@ namespace tts {
             merged.erase(std::unique(merged.begin(), 
                                      merged.end()), merged.end());
             std::swap(values, merged);
+        }
+
+        // attr!
+        [[nodiscard]]
+        i32 start_year() const {
+            if (values.empty()) 
+                throw HolidaysError(err::holidays::empty);
+
+            return values.front().get_year();
+        }
+        
+        [[nodiscard]]
+        i32 end_year() const {
+            if (values.empty()) 
+                throw HolidaysError(err::holidays::empty);
+
+            return values.back().get_year();
         }
    };
 } // namespace tts.
