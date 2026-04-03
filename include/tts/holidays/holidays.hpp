@@ -199,8 +199,8 @@ namespace tts {
             if (cmplt(date.get_year(), start_year())
                     || cmpgt(date.get_year(), end_year()))
                 throw HolidaysError(err::holidays::invalid);
-
-            return std::binary_search(values.begin(), values.end(), date);
+            
+            return is_holiday(date);
         }
  
         // n-ary merge!
