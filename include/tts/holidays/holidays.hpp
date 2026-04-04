@@ -53,7 +53,7 @@ namespace tts {
             dates.erase(std::unique(dates.begin(), 
                                     dates.end()), dates.end());
 
-            return Holidays{name, dates};
+            return Holidays{std::move(name), std::move(dates)};
         }
 
             /**
@@ -166,6 +166,12 @@ namespace tts {
         // copy-to accessor!
         [[nodiscard]]
         std::vector<Date> to_dates() const noexcept {
+            
+            /**
+             * Beware **expensive**, as in general, the convention is
+             * that to_*() methods copy. 
+            */
+
             return values;
         }
 
