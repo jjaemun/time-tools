@@ -28,7 +28,7 @@ namespace std {
         //minutes.
         [[nodiscard]]
         std::size_t operator()(const tts::Minutes &minutes) const noexcept {
-            return std::hash<tts::i32>{}(minutes.as_count());
+            return std::hash<tts::i64>{}(minutes.to_seconds());
         }
     };
 
@@ -37,7 +37,7 @@ namespace std {
         // hours.
         [[nodiscard]]
         std::size_t operator()(const tts::Hours &hours) const noexcept {
-            return std::hash<tts::i32>{}(hours.as_count());
+            return std::hash<tts::i64>{}(hours.to_seconds());
         }
     };
 
@@ -46,7 +46,7 @@ namespace std {
         // days. 
         [[nodiscard]]
         std::size_t operator()(const tts::Days &days) const noexcept {
-            return std::hash<tts::i32>{}(days.as_count());
+            return std::hash<tts::i64>{}(days.to_seconds());
         }
     };
 
@@ -56,7 +56,7 @@ namespace std {
         // weeks.
         [[nodiscard]]
         std::size_t operator()(const tts::Weeks &weeks) const noexcept {
-            return std::hash<tts::i32>{}(weeks.as_count());
+            return std::hash<tts::i64>{}(weeks.to_seconds());
         }
     };
 } // namespace std.
