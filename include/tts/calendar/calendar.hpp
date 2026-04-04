@@ -64,7 +64,7 @@ namespace tts {
             auto adjusted = date;
             switch (conv) {
                 case (businessday::following):
-                    while (!is_business_day(ajusted))
+                    while (!is_business_day(adjusted))
                         ++adjusted;
 
                     return adjusted;
@@ -73,7 +73,7 @@ namespace tts {
                     while (!is_business_day(adjusted))
                         ++adjusted;
 
-                    if (adjusted.get_month()) != date.get_month()) {
+                    if (adjusted.get_month() != date.get_month()) {
                         adjusted = date;
                         while (!is_business_day(adjusted))
                             --adjusted;
@@ -100,18 +100,24 @@ namespace tts {
                     return adjusted;
 
                 case (businessday::nearest):
-                    auto fore = adjusted;
-                    auto back = adjusted;
 
-                    while(!is_business_day(fore) && !is_business_day(back)) {
-                        ++fore;
+                    /**
+                     * If both become simultaneously business days, 
+                     * return preceding over following.
+                    */
+
+                    auto back = adjusted;
+                    auto fore = adjusted;
+
+                    while(!is_business_day(back) && !is_business_day(fore)) {
                         --back;
+                        ++fore;
                     }
                 
-                    if (is_business_day(fore))
-                        return fore;
-                    else
+                    if (is_business_day(back))
                         return back;
+                    else
+                        return fore;
 
                 default:
                     __builtin_unreachable();
