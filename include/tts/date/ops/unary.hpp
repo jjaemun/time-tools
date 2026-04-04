@@ -26,7 +26,6 @@ namespace tts {
     }
 
     //postfix!
-    [[nodiscard]]
     inline Date operator++(Date &date, int) {
         if (!cmplt(date.to_unix_serial(), unix::date::MAX))
             throw DateError(err::date::overflow);
@@ -37,7 +36,6 @@ namespace tts {
         return deepcopy;
     }
 
-    [[nodiscard]]
     inline Date operator--(Date &date, int) {
         if (!cmpgt(date.to_unix_serial(), unix::date::MIN))
             throw DateError(err::date::underflow);
@@ -49,7 +47,6 @@ namespace tts {
     }
 
     // plus!
-    [[nodiscard]]
     constexpr Date operator+(Date date) noexcept {
 
         /**
