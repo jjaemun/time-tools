@@ -91,7 +91,7 @@ namespace tts {
                      while (!is_business_day(adjusted))
                         --adjusted;
 
-                    if (adjusted.get_month()) != date.get_month()) {
+                    if (adjusted.get_month() != date.get_month()) {
                         adjusted = date;
                         while (!is_business_day(adjusted))
                             ++adjusted;
