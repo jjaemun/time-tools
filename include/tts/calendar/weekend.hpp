@@ -16,7 +16,7 @@ namespace tts::conventions {
 
     // predicates!
     [[nodiscard]]
-    bool is_weekend(Date date, weekend conv) noexcept {
+    inline bool is_weekend(Date date, weekend conv) noexcept {
         
         /**
          * Checks whether current date fall on weekend 

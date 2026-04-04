@@ -46,8 +46,7 @@ namespace tts {
         }
 
         [[nodiscard]]
-        Date adjust(Date date, 
-                    conventions::businessday conv) const noexcept {
+        Date adjust(Date date, conventions::businessday conv) const {
             
             /**
              * Heavy branching due to width of possibilities, but otherwise
@@ -102,8 +101,8 @@ namespace tts {
                 case (businessday::nearest):
 
                     /**
-                     * If both become simultaneously business days, 
-                     * return preceding over following.
+                     * Whenever both are business days after the same number
+                     * of steps, return preceding over following.
                     */
 
                     auto back = adjusted;
