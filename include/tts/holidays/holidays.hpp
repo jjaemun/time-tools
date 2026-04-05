@@ -225,7 +225,7 @@ namespace tts {
  
         // n-ary merge!
         template <typename... Others>
-        void join(const Others&... others) noexcept {
+        void join(const Others&... others) {
             
             /**
              * k-way merge on variadic pack of Holidays. Mutates 
