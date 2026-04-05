@@ -20,7 +20,6 @@ namespace tts {
         */
 
     private:
-        std::string name;
         Holidays holidays;
         conventions::weekend weekend;
  
