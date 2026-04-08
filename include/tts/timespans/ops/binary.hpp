@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "tts/tspans/tspans.hpp"
+#include "tts/timespans/timespans.hpp"
 
 
 namespace tts {

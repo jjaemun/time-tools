@@ -2,7 +2,7 @@
 
 
 #include "tts/cmp.hpp"
-#include "tts/tspans/tspans.hpp"
+#include "tts/timespans/timespans.hpp"
 
 
 namespace tts {

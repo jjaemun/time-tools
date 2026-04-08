@@ -1,9 +1,9 @@
 #pragma once 
 
 
-#include "tts/tspans/tspans.hpp"
-#include "tts/tspans/ops/binary.hpp"
-#include "tts/tspans/ops/scalar.hpp"
+#include "tts/timespans/timespans.hpp"
+#include "tts/timespans/ops/binary.hpp"
+#include "tts/timespans/ops/scalar.hpp"
 
 
 namespace tts {

@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "tts/tspans/tspans.hpp"
+#include "tts/timespans/timespans.hpp"
 
 namespace tts {
     // prefix!
@@ -36,7 +36,7 @@ namespace tts {
         return deepcopy;
     }
     
-    // plus!
+    // pos!
     template <typename T, i64 N>
     [[nodiscard]]
     constexpr TimeSpan<T, N> operator+(TimeSpan<T, N> tspan) noexcept {
