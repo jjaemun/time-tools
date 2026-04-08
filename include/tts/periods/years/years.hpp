@@ -1,18 +1,18 @@
 #pragma once
 
+
 #include <string>
 
 
 #include "tts/types.hpp"
-#include "tts/periods/months/constants.hpp"
+#include "tts/periods/years/constants.hpp"
 
 
 namespace tts {
-    class Months final {
+    class Years final {
         
         /**
-         * Months (non-linear) period abstraction. Safe by 
-         * definition.
+         * Years (non-linear) period abstraction. Safe by definition.
         */
         
     private:
@@ -20,7 +20,7 @@ namespace tts {
 
     public:
         // constructor!
-        explicit constexpr Months(i32 value_) noexcept 
+        explicit constexpr Years(i32 value_) noexcept 
             : value(value_) {}
 
         // copy-to-accessor!
@@ -42,7 +42,8 @@ namespace tts {
 
         // attr!
         std::string to_str() const noexcept {
-            return std::to_string(value) + months::POSTFIX;
+            // std::format allowed??
+            return std::to_string(value) + years::POSTFIX;
         }
     };
 } // namespace tts.
