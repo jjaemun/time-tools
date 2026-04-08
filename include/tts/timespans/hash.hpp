@@ -2,7 +2,7 @@
 
 
 #include <functional>
-#include "tts/timespans/tspans.hpp"
+#include "tts/timespans/timespans.hpp"
 
 
 namespace std {
