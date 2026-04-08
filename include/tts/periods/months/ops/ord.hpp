@@ -8,12 +8,6 @@
 namespace tts {
     #if (defined(__cpp_impl_three_way_comparison) \
             && defined(__cpp_lib_three_way_comparison))
-    
-        /**
-         * As of writing this, it is unclear whether spaceship implementation
-         * is banned for cmp operations. Regardless, some future-proof-ing is
-         * never too bad (C++20), especially when it saves lines of code.
-         */
 
     // spaceship!
     [[nodiscard]]
