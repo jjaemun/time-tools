@@ -3,7 +3,7 @@
 
 #include "tts/cmp.hpp"
 #include "tts/date/date.hpp"
-#include "tts/tspans/prelude.hpp"
+#include "tts/timespans/prelude.hpp"
 
 
 namespace tts {
@@ -25,7 +25,7 @@ namespace tts {
     [[nodiscard]]
     inline Date operator+(Date date, TimeSpan<T, N> tspan) {
         const auto advanced = date.to_unix_serial() + tspan.to_raw_days();
-        if (!cmplt(advanced, unix::date::MAX))
+        if (cmpgt(advanced, unix::date::MAX))
             throw DateError(err::date::overflow);
     
         return Date::from_unix_serial_unsafe(advanced);
@@ -36,7 +36,7 @@ namespace tts {
     [[nodiscard]]
     inline Date operator-(Date date, TimeSpan<T, N> tspan) {
         const auto regressed = date.to_unix_serial() - tspan.to_raw_days();
-        if (!cmpgt(regressed, unix::date::MIN))
+        if (cmplt(regressed, unix::date::MIN))
             throw DateError(err::date::underflow);
     
         return Date::from_unix_serial_unsafe(regressed);

@@ -3,7 +3,7 @@
 
 #include "tts/cmp.hpp"
 #include "tts/date/date.hpp"
-#include "tts/tspans/prelude.hpp"
+#include "tts/timespans/prelude.hpp"
 
 
 namespace tts {
