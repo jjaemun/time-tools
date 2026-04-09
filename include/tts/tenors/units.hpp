@@ -7,9 +7,9 @@ namespace tts::tenor {
         days,
         businessdays,
         weeks,
+        months,
         quarters,
         semesters,
-        months,
         years
     };
 } // namespace tts.

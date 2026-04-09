@@ -25,7 +25,7 @@ namespace tts::tenor {
 
     // parsing! 
     [[nodiscard]]
-    inline token from_tenor_str(std::string_view str) {
+    inline token from_str(std::string_view str) {
         
         /**
          * Tokenizes input tenor string. Expects value-unit fmt,
@@ -38,12 +38,12 @@ namespace tts::tenor {
             throw TenorError(err::tenor::empty);
 
         std::size_t offset{0};
-        while(offset < str.lenght() && is_digit(str[offset])) {
+        while(offset < str.length() && is_digit(str[offset])) {
             t.value = t.value * 10 + (str[offset] - '0');
             ++offset;
         }
 
-        if (cmpeq(offset, std::size_t{0}) || cmpeq(offset, str.length())
+        if (cmpeq(offset, std::size_t{0}) || cmpeq(offset, str.length()))
             // fully parsed but incomplete.
             throw TenorError(err::tenor::invalid);
 
@@ -96,6 +96,13 @@ namespace tts::tenor {
 
                 case ('M'):
                     t.u = units::months;
+                    break;
+
+                case ('q'):
+                    [[fallthrough]];
+
+                case ('Q'):
+                    t.u = units::quarters;
                     break;
 
                 case ('s'):
