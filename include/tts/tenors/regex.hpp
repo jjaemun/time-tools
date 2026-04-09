@@ -49,7 +49,7 @@ namespace tts::tenor {
             throw TenorError(err::tenor::invalid);
 
         const auto suffix = str.substr(offset);
-        if (cmpeq(suffix.lenth(), std::size_t{2})) {
+        if (cmpeq(suffix.length(), std::size_t{2})) {
             switch (suffix.front()) {
                 case ('b'):
                     [[fallthrough]];
