@@ -8,7 +8,8 @@ namespace tts::err {
     // types!
     enum class tenor {
         invalid,
-        empty 
+        empty,
+        conversion
     };
 
     // descriptors!
@@ -21,10 +22,13 @@ namespace tts::err {
 
         switch (code) {
             case (tenor::invalid):
-                return "String pattern does not match.";
+                return "Invalid string pattern.";
             
             case (tenor::empty):
                 return "No tenor provided.";
+
+            case (tenor::conversion):
+                return "Ill-formed conversion with linear and non-linear durations."
 
             default:
                 // c++23 only std::unreachable().

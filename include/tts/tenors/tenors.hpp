@@ -5,8 +5,8 @@
 
 
 #include "tts/types.hpp"
-#include "tts/periods/tenors/units.hpp"
-#include "tts/periods/tenors/regex.hpp"
+#include "tts/tenors/units.hpp"
+#include "tts/tenors/regex.hpp"
 
 
 namespace tts {
