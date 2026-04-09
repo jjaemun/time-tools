@@ -19,6 +19,7 @@ namespace tts::tenor {
 
 
     // predicates!
+    [[nodiscard]]
     inline bool is_digit(const char c) noexcept {
         return std::isdigit(static_cast<unsigned_char>(c));
     }

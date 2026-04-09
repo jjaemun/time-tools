@@ -56,6 +56,7 @@ namespace tts {
         }
 
         // attr!
+        [[nodiscard]]
         std::string to_str() const noexcept {
             std::string suffix{};
             switch (units) {
