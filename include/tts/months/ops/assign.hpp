@@ -1,9 +1,9 @@
 #pragma once 
 
 
-#include "tts/periods/months/months.hpp"
-#include "tts/periods/months/ops/binary.hpp"
-#include "tts/periods/months/ops/scalar.hpp"
+#include "tts/months/months.hpp"
+#include "tts/months/ops/binary.hpp"
+#include "tts/months/ops/scalar.hpp"
 
 
 namespace tts {

@@ -19,7 +19,6 @@ namespace tts {
    
     // postfix!
     template <typename T, i64 N>
-    [[nodiscard]]
     constexpr TimeSpan<T, N> operator++(TimeSpan<T, N> &tspan, int) noexcept {
         const auto deepcopy = tspan;
         ++tspan.as_mut_count();
@@ -28,7 +27,6 @@ namespace tts {
     }
 
     template <typename T, i64 N>
-    [[nodiscard]]
     constexpr TimeSpan<T, N> operator--(TimeSpan<T, N> &tspan, int) noexcept {
         const auto deepcopy = tspan;
         --tspan.as_mut_count();

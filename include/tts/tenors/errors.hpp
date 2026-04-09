@@ -6,29 +6,25 @@
 
 namespace tts::err {
     // types!
-    enum class date {
+    enum class tenor {
         invalid,
-        overflow,
-        underflow
+        empty 
     };
 
     // descriptors!
     [[nodiscard]]
-    inline std::string to_str(date code) {
+    inline std::string to_str(tenor code) {
 
         /**
          * Converts date submodule error code to str.
         */
 
         switch (code) {
-            case (date::invalid):
-                return "Date outside valid interval.";
+            case (tenor::invalid):
+                return "String pattern does not match.";
             
-            case (date::overflow):
-                return "Date arithmetic overflow.";
-
-            case (date::underflow):
-                return "Date arithmetic underflow.";
+            case (tenor::empty):
+                return "No tenor provided.";
 
             default:
                 // c++23 only std::unreachable().

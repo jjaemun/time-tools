@@ -1,31 +1,31 @@
 #pragma once
 
 
-#include "tts/periods/years/years.hpp"
+#include "tts/months/months.hpp"
 
 
 namespace tts {
     // add!
     [[nodiscard]]
-    constexpr Years operator+(Years lhs, Years rhs) noexcept {
+    constexpr Months operator+(Months lhs, Months rhs) noexcept {
         
         /**
          * Value semantics follow from trivial copiability of
-         * years. 
+         * months. 
         */
 
-        return Years{lhs.count() + rhs.count()};
+        return Months{lhs.count() + rhs.count()};
     }
 
     // sub!
     [[nodiscard]]
-    constexpr Years operator-(Years lhs, Years rhs) noexcept {
+    constexpr Months operator-(Months lhs, Months rhs) noexcept {
         
         /**
          * Value semantics follow from trivial copiability of
-         * years. 
+         * months. 
         */
 
-        return Years{lhs.count() - rhs.count()};
+        return Months{lhs.count() - rhs.count()};
     }
 } // namespace tts.

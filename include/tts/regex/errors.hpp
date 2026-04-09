@@ -6,30 +6,22 @@
 
 namespace tts::err {
     // types!
-    enum class date {
-        invalid,
-        overflow,
-        underflow
+    enum class regex {
+        invalid
     };
 
     // descriptors!
     [[nodiscard]]
-    inline std::string to_str(date code) {
+    inline std::string to_str(regex code) {
 
         /**
          * Converts date submodule error code to str.
         */
 
         switch (code) {
-            case (date::invalid):
-                return "Date outside valid interval.";
+            case (regex::invalid):
+                return "String pattern cannot be parsed.";
             
-            case (date::overflow):
-                return "Date arithmetic overflow.";
-
-            case (date::underflow):
-                return "Date arithmetic underflow.";
-
             default:
                 // c++23 only std::unreachable().
                 __builtin_unreachable(); 

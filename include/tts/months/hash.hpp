@@ -2,13 +2,13 @@
 
 
 #include <functional>
-#include "tts/periods/years/years.hpp"
+#include "tts/months/months.hpp"
 
 
 namespace std {
     // hash!
     template <>
-    struct hash<tts::Years> {
+    struct hash<tts::Months> {
 
         /**
          * Specialization is favoured over custom hashing for 
@@ -16,8 +16,8 @@ namespace std {
         */
 
         [[nodiscard]]
-        std::size_t operator()(const tts::Years &years) const noexcept {
-            return std::hash<tts::i32>{}(years.count());
+        std::size_t operator()(const tts::Months &months) const noexcept {
+            return std::hash<tts::i32>{}(months.count());
         }
     };
 } // namespace std.
