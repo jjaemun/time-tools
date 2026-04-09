@@ -15,7 +15,7 @@ namespace tts {
         */
 
     public:
-        explicit TenorError(const err::regex &code_) :
+        explicit TenorError(const err::tenor &code_) :
             std::runtime_error(err::to_str(code_)) {}
     };
 } // namespace tts.
