@@ -10,6 +10,11 @@
 #include "tts/calendar/businessday.hpp"
 #include "tts/date/prelude.hpp"
 #include "tts/holidays/prelude.hpp"
+#include "tts/timespans/prelude.hpp"
+#include "tts/months/prelude.hpp"
+#include "tts/years/prelude.hpp"
+#include "tts/businessdays/prelude.hpp"
+#include "tts/tenors/prelude.hpp"
 
 
 namespace tts {
@@ -44,6 +49,7 @@ namespace tts {
             return conventions::is_weekend(date, weekend);
         }
 
+        // logic!
         [[nodiscard]]
         Date adjust(Date date, conventions::businessday conv) const {
             
@@ -120,6 +126,37 @@ namespace tts {
                 default:
                     __builtin_unreachable();
             }
+        }
+
+        template <typename T, i64 N>
+        [[nodiscard]]
+        Date advance(Date date, TimeSpan<T, N> tspan) const {
+        
+            /**
+             * Linear timespan add (sub) is well defined under Date ops, 
+             * and requires no businessday logic.
+            */
+
+            return date + tspan;
+        }
+
+        [[nodiscard]]
+        Date advance(Date date, BusinessDays bds, 
+                                conventions::businessdays conv) const {
+           
+            /**
+             * For businessdays, count accordingly.
+            */
+   
+            auto remaining = bds.count();
+
+            while (cmpneq(remaining, 0)) {
+                ++date;
+                if (is_business_day(date))
+                    ++offset;
+            }
+            
+            return date;
         }
     };
 
