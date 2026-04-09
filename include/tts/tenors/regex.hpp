@@ -11,12 +11,6 @@
 
 
 namespace tts::tenor {
-
-            std::string_view tenor;
-            std::size_t position;
-            std::size_t read_position;
-            char byte;
-
     // token!
     struct token {
         i32 value;
