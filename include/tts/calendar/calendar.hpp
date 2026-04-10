@@ -149,7 +149,6 @@ namespace tts {
             */
    
             auto remaining = bds.count();
-
             while (cmpneq(remaining, 0)) {
                 ++date;
                 if (is_business_day(date))
