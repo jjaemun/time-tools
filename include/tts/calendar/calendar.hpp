@@ -152,7 +152,7 @@ namespace tts {
             while (cmpneq(remaining, 0)) {
                 ++date;
                 if (is_business_day(date))
-                    ++offset;
+                    --remaining;
             }
             
             return date;
